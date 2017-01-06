@@ -1,0 +1,15 @@
+E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\bin\Debug\Thrift.dll
+E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\bin\Debug\Thrift.pdb
+E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\obj\Debug\Thrift.dll
+E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\obj\Debug\Thrift.pdb
+E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
+C:\Users\HASHIR\Desktop\Boxalino\thrift\src\bin\Debug\Thrift.dll
+C:\Users\HASHIR\Desktop\Boxalino\thrift\src\bin\Debug\Thrift.pdb
+C:\Users\HASHIR\Desktop\Boxalino\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
+C:\Users\HASHIR\Desktop\Boxalino\thrift\src\obj\Debug\Thrift.dll
+C:\Users\HASHIR\Desktop\Boxalino\thrift\src\obj\Debug\Thrift.pdb
+E:\Github\Boxalino\thrift\src\bin\Debug\Thrift.dll
+E:\Github\Boxalino\thrift\src\bin\Debug\Thrift.pdb
+E:\Github\Boxalino\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
+E:\Github\Boxalino\thrift\src\obj\Debug\Thrift.dll
+E:\Github\Boxalino\thrift\src\obj\Debug\Thrift.pdb
