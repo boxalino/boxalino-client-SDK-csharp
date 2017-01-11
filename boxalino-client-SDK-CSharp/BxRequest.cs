@@ -561,7 +561,7 @@ namespace boxalino_client_SDK_CSharp
             int k = 0;
             foreach (var contextItem in contextItems)
             {
-                if (contextItem.IndexId == null)
+                if (string.IsNullOrEmpty(contextItem.IndexId))
                 {
                    
                     this.contextItems[k].IndexId = indexId;

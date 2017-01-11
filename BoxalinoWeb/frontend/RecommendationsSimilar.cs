@@ -45,12 +45,14 @@ namespace BoxalinoWeb.frontend
                 //create similar recommendations request
                 BxRecommendationRequest bxRequest = new BxRecommendationRequest(language, choiceId, hitCount);
 
-              
-              
+              //indicate the product the user is looking at now (reference of what the recommendations need to be similar to)
+             	bxRequest.setProductContext(itemFieldId, itemFieldIdValue);
+
 
                 //add the request
                 bxClient.addRequest(bxRequest);
 
+               
                 //make the query to Boxalino server and get back the response for all requests
                 BxChooseResponse bxResponse = bxClient.getResponse();
 
@@ -70,6 +72,12 @@ namespace BoxalinoWeb.frontend
                 }
             }
 
+        }
+
+        public void Print<T>(T x)
+        {
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(x, Newtonsoft.Json.Formatting.Indented);
+            HttpContext.Current.Response.Write("<pre>" + json + "</pre>");
         }
     }
 }

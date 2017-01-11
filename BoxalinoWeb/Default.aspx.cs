@@ -15,7 +15,8 @@ namespace BoxalinoWeb
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            RecommendationsSimilar obj = new RecommendationsSimilar();
+            obj.recommendationsSimilar();
         }
 
 
