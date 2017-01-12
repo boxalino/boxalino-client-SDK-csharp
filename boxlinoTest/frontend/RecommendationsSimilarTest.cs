@@ -2,25 +2,25 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.backend;
-using System.IO;
 using System.Web;
-using System.Web.SessionState;
+using System.IO;
 using System.Reflection;
+using System.Web.SessionState;
+using BoxalinoWeb.frontend;
+using System.Linq;
 
-namespace boxlinoTest.backend
+namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for DataFullExportTest
+    /// Summary description for RecommendationsSimilarTest
     /// </summary>
     [TestClass]
-    public class DataFullExportTest
+    public class RecommendationsSimilarTest
     {
+
 
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
-
-
 
         [TestInitialize]
         public void TestSetup()
@@ -28,7 +28,7 @@ namespace boxlinoTest.backend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -59,24 +59,23 @@ namespace boxlinoTest.backend
         }
 
         [TestMethod]
-       
-        public void testBackendDataFullExport()
+        public void testFrontendRecommendationsSimilar()
         {
-            DataFullExport _dataFullExport = new DataFullExport();
+            RecommendationsSimilar _recommendationsSimilar = new RecommendationsSimilar();
             try
             {
-                _dataFullExport.account = this.account;
-                _dataFullExport.password = this.password;
-                _dataFullExport.print = false;
-                _dataFullExport.dataFullExport();
+                _recommendationsSimilar.account = this.account;
+                _recommendationsSimilar.password = this.password;
+                _recommendationsSimilar.print = false;
+                List<string> hitIds = Enumerable.Range(1, 10).Select(n => n.ToString()).ToList();
+                _recommendationsSimilar.recommendationsSimilar();
+                CollectionAssert.AreEqual(_recommendationsSimilar.bxResponse.getHitIds().Values.ToList<string>(), hitIds);
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Assert.Fail("Expected no exception, but got: " + ex.Message);
-            }           
-
+            }
         }
-        
-
     }
 }

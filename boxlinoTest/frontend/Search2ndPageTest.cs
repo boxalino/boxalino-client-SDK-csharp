@@ -2,25 +2,22 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.backend;
-using System.IO;
+using BoxalinoWeb.frontend;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
+using System.IO;
 
-namespace boxlinoTest.backend
+namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for DataFullExportTest
+    /// Summary description for Search2ndPageTest
     /// </summary>
     [TestClass]
-    public class DataFullExportTest
+    public class Search2ndPageTest
     {
-
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
-
-
 
         [TestInitialize]
         public void TestSetup()
@@ -28,7 +25,7 @@ namespace boxlinoTest.backend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -58,25 +55,24 @@ namespace boxlinoTest.backend
             HttpContext.Current = httpContext;
         }
 
+
         [TestMethod]
-       
-        public void testBackendDataFullExport()
+        public void testFrontendSearch2ndPage()
         {
-            DataFullExport _dataFullExport = new DataFullExport();
+            Search2ndPage _search2ndPage = new Search2ndPage();
             try
             {
-                _dataFullExport.account = this.account;
-                _dataFullExport.password = this.password;
-                _dataFullExport.print = false;
-                _dataFullExport.dataFullExport();
+                _search2ndPage.account = this.account;
+                _search2ndPage.password = this.password;
+                _search2ndPage.print = false;
+                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
+                _search2ndPage.search2ndPage();
+                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Assert.Fail("Expected no exception, but got: " + ex.Message);
-            }           
-
+            }
         }
-        
-
     }
 }

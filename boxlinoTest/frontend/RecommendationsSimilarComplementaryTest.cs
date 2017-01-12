@@ -2,24 +2,26 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.backend;
+using BoxalinoWeb.frontend;
 using System.IO;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
+using System.Linq;
 
-namespace boxlinoTest.backend
+namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for DataFullExportTest
+    /// Summary description for RecommendationsSimilarComplementaryTest
     /// </summary>
     [TestClass]
-    public class DataFullExportTest
+    public class RecommendationsSimilarComplementaryTest
     {
+
+
 
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
-
 
 
         [TestInitialize]
@@ -59,24 +61,26 @@ namespace boxlinoTest.backend
         }
 
         [TestMethod]
-       
-        public void testBackendDataFullExport()
+        public void testFrontendRecommendationsSimilarComplementary()
         {
-            DataFullExport _dataFullExport = new DataFullExport();
+            RecommendationsSimilarComplementary _recommendationsSimilarComplementary = new RecommendationsSimilarComplementary();
             try
             {
-                _dataFullExport.account = this.account;
-                _dataFullExport.password = this.password;
-                _dataFullExport.print = false;
-                _dataFullExport.dataFullExport();
+                _recommendationsSimilarComplementary.account = this.account;
+                _recommendationsSimilarComplementary.password = this.password;
+                _recommendationsSimilarComplementary.print = false;
+                string choiceIdSimilar = "similar";
+                string choiceIdComplementary = "complementary";
+                List<string> complementaryIds = Enumerable.Range(11, 10).Select(n => n.ToString()).ToList();
+                List<string> similarIds = Enumerable.Range(1, 10).Select(n => n.ToString()).ToList();
+                _recommendationsSimilarComplementary.recommendationsSimilarComplementary();
+                CollectionAssert.AreEqual(_recommendationsSimilarComplementary.bxResponse.getHitIds(choiceIdSimilar).Values.ToList<string>(), similarIds);
+                CollectionAssert.AreEqual(_recommendationsSimilarComplementary.bxResponse.getHitIds(choiceIdComplementary).Values.ToList<string>(), complementaryIds);
             }
-            catch(Exception ex)
+            catch (Exception ex)    
             {
                 Assert.Fail("Expected no exception, but got: " + ex.Message);
-            }           
-
+            }
         }
-        
-
     }
 }

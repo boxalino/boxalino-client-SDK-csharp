@@ -27,7 +27,7 @@ namespace boxalino_client_SDK_CSharp
         }
         public static string session_id()
         {
-            return manager.GetSessionID(System.Web.HttpContext.Current);
+            return System.Web.HttpContext.Current.Session.SessionID;
         }
 
         public static void setcookie(HttpCookie cookie)

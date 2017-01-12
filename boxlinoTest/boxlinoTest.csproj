@@ -40,6 +40,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Web" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -49,18 +50,26 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
   <ItemGroup>
     <Compile Include="backend\DataFullExportTest.cs" />
+    <Compile Include="frontend\RecommendationsBasketTest.cs" />
+    <Compile Include="frontend\RecommendationsSimilarComplementaryTest.cs" />
+    <Compile Include="frontend\RecommendationsSimilarTest.cs" />
+    <Compile Include="frontend\Search2ndPageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="frontend\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\boxalino-client-SDK-CSharp\boxalino_client_SDK_CSharp.csproj">
+      <Project>{2b570914-d503-4684-8fae-0da64fb7261d}</Project>
+      <Name>boxalino_client_SDK_CSharp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BoxalinoWeb\BoxalinoWeb.csproj">
       <Project>{c625d316-8241-42b6-a139-924afd395179}</Project>
       <Name>BoxalinoWeb</Name>

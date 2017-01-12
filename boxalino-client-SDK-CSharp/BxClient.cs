@@ -320,8 +320,8 @@ namespace boxalino_client_SDK_CSharp
             RequestContext requestContext = new RequestContext();           
             requestContext.Parameters = new Dictionary<string, List<string>>
         {
-            { "User-Agent", new List<string>(){HttpContext.Current.Request.ServerVariables["HTTP_USER_AGENT"]   }},
-            {"User-Host",new List<string>(){this.getIP()}} ,
+            { "User-Agent", new List<string>(){HttpContext.Current.Request.ServerVariables["HTTP_USER_AGENT"]??string.Empty  }},
+            {"User-Host",new List<string>(){this.getIP()??string.Empty}} ,
             {"User-SessionId",new List<string>(){this.sessionId}},
             {"User-Referer",new List<string>(){ Convert.ToString(HttpContext.Current.Request.ServerVariables["HTTP_REFERER"]==null? this.getCurrentURL(): HttpContext.Current.Request.ServerVariables["HTTP_REFERER"]) }}, //
             {"User-URL",new List<string>(){this.getCurrentURL()}}
@@ -391,9 +391,9 @@ namespace boxalino_client_SDK_CSharp
         /// <returns></returns>
         protected string getCurrentURL()
         {
-            string protocol = (HttpContext.Current.Request.ServerVariables["SERVER_PROTOCOL"].ToLower().Contains("https") ? "http" : "https");
-            string hostname = HttpContext.Current.Request.ServerVariables["HTTP_HOST"];
-            string requesturi = HttpContext.Current.Request.ServerVariables["REQUEST_URI"];
+            string protocol = HttpContext.Current.Request.ServerVariables["SERVER_PROTOCOL"]==null?string.Empty:(HttpContext.Current.Request.ServerVariables["SERVER_PROTOCOL"].ToLower().Contains("https") ? "http" : "https");
+            string hostname = HttpContext.Current.Request.ServerVariables["HTTP_HOST"]==null?string.Empty: HttpContext.Current.Request.ServerVariables["HTTP_HOST"];
+            string requesturi = HttpContext.Current.Request.ServerVariables["REQUEST_URI"]==null?string.Empty: HttpContext.Current.Request.ServerVariables["REQUEST_URI"];
             return protocol + "://" + hostname + requesturi;
         }
 
