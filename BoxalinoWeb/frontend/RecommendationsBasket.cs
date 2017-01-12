@@ -42,13 +42,6 @@ namespace BoxalinoWeb.frontend
                 string choiceId = "basket"; //the recommendation choice id (standard choice ids are: "similar" => similar products on product detail page, "complementary" => complementary products on product detail page, "basket" => cross-selling recommendations on basket page, "search"=>search results, "home" => home page personalized suggestions, "category" => category page suggestions, "navigation" => navigation product listing pages suggestions)
                 string itemFieldId = "id"; // the field you want to use to define the id of the product (normally id, but could also be a group id if you have a difference between group id and sku)
               
-              
-                int hitCount = 10; //a maximum number of recommended result to return in one page
-
-                //create similar recommendations request
-                BxRecommendationRequest bxRequest = new BxRecommendationRequest(language, choiceId, hitCount);
-
-
                 List<CustomBasketContent> itemFieldIdValuesPrices = new List<CustomBasketContent>(); //the product ids and their prices that the user currently has in his basket
 
                 CustomBasketContent customBasketContent = new CustomBasketContent();
@@ -59,11 +52,15 @@ namespace BoxalinoWeb.frontend
                 customBasketContent.Id = "1234";
                 customBasketContent.Price = "130.5";
                 itemFieldIdValuesPrices.Add(customBasketContent);
-              
-               
 
-              
-          
+                int hitCount = 10; //a maximum number of recommended result to return in one page
+
+
+                //create similar recommendations request
+                BxRecommendationRequest bxRequest = new BxRecommendationRequest(language, choiceId, hitCount);
+
+                	//indicate the products the user currently has in his basket (reference of products for the recommendations)
+	            bxRequest.setBasketProductWithPrices(itemFieldId, itemFieldIdValuesPrices); 
 
                 //add the request
                 bxClient.addRequest(bxRequest);

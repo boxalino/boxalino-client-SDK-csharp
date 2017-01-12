@@ -54,12 +54,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="backend\DataFullExportTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="backend\" />
     <Folder Include="frontend\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoxalinoWeb\BoxalinoWeb.csproj">
+      <Project>{c625d316-8241-42b6-a139-924afd395179}</Project>
+      <Name>BoxalinoWeb</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
