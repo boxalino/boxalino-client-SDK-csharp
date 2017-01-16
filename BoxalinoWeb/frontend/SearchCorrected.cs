@@ -8,9 +8,13 @@ using System.Web;
 
 namespace BoxalinoWeb.frontend
 {
-    class SearchCorrected
+   public class SearchCorrected
     {
+        public string account { get; set; }
+        public string password { get; set; }
+        public bool? print { get; set; }
 
+        public BxChooseResponse bxResponse = null;
         public void searchCorrected()
         {
             /**
@@ -21,14 +25,14 @@ namespace BoxalinoWeb.frontend
             //include the Boxalino Client SDK php files
             //path to the lib folder with the Boxalino Client SDK and PHP Thrift Client files
             //required parameters you should set for this example to work
-            string account = "csharp_unittest"; // your account name
-            string password = "csharp_unittest"; // your account password
+            string account = string.IsNullOrEmpty(this.account) ? "csharp_unittest" : this.account; // your account name
+            string password = string.IsNullOrEmpty(this.password) ? "csharp_unittest" : this.password; // your account password
             string domain = ""; // your web-site domain (e.g.: www.abc.com)
             string[] languages = new string[] { "en" }; //declare the list of available languages
             bool isDev = false; //are the data to be pushed dev or prod data?
             bool isDelta = false; //are the data to be pushed full data (reset index) or delta (add/modify index)?
             List<string> logs = new List<string> { }; //optional, just used here in example to collect logs
-            bool print = true;
+            bool print = this.print ?? true;
             //Create the Boxalino Data SDK instance
 
             //Create the Boxalino Client SDK instance
@@ -50,7 +54,7 @@ namespace BoxalinoWeb.frontend
              
 
                 //make the query to Boxalino server and get back the response for all requests
-                BxChooseResponse bxResponse = bxClient.getResponse();
+                bxResponse = bxClient.getResponse();
 
                 //if the query is corrected, then print the corrrect query text
                 if (bxResponse.areResultsCorrected())

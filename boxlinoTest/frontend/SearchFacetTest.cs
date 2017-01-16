@@ -2,21 +2,23 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.frontend;
 using System.Web;
 using System.Web.SessionState;
-using System.Reflection;
 using System.IO;
+using System.Reflection;
+using BoxalinoWeb.frontend;
+using boxalino_client_SDK_CSharp;
 using System.Linq;
 
 namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for Search2ndPageTest
+    /// Summary description for SearchFacetTest
     /// </summary>
     [TestClass]
-    public class Search2ndPageTest
+    public class SearchFacetTest
     {
+
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
 
@@ -26,7 +28,7 @@ namespace boxlinoTest.frontend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -45,7 +47,7 @@ namespace boxlinoTest.frontend
             httpContext.Items["AspSession"] =
                 typeof(HttpSessionState)
                 .GetConstructor(
-                                    BindingFlags.NonPublic | BindingFlags.Instance,
+                                    System.Reflection.BindingFlags.NonPublic | BindingFlags.Instance,
                                     null,
                                     CallingConventions.Standard,
                                     new[] { typeof(HttpSessionStateContainer) },
@@ -56,19 +58,23 @@ namespace boxlinoTest.frontend
             HttpContext.Current = httpContext;
         }
 
-
         [TestMethod]
-        public void testFrontendSearch2ndPage()
+        public void testFrontendSearchFacet()
         {
-            Search2ndPage _search2ndPage = new Search2ndPage();
+            SearchFacet _searchFacet = new SearchFacet();
             try
             {
-                _search2ndPage.account = this.account;
-                _search2ndPage.password = this.password;
-                _search2ndPage.print = false;
-                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
-                _search2ndPage.search2ndPage();
-                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
+                _searchFacet.account = this.account;
+                _searchFacet.password = this.password;
+                _searchFacet.print = false;
+
+                _searchFacet.searchFacet();
+                NestedDictionary<string, object> productColor1 = new NestedDictionary<string, object>();
+                productColor1["products_color"].Value = new List<string>() { { "Black"}, { "Gray" }, { "Yellow" } };
+                NestedDictionary<string, object> productColor2 = new NestedDictionary<string, object>();
+                productColor2["products_color"].Value = new List<string>() { { "Gray" }, { "Orange" }, { "Yellow" } };
+                Assert.AreEqual(_searchFacet.bxResponse.getHitFieldValues(_searchFacet.facetField.ToArray())["41"], productColor1);
+                Assert.AreEqual(_searchFacet.bxResponse.getHitFieldValues(_searchFacet.facetField.ToArray())["1940"], productColor1);
             }
             catch (Exception ex)
             {

@@ -2,20 +2,20 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.frontend;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
 using System.IO;
+using BoxalinoWeb.frontend;
 using System.Linq;
 
 namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for Search2ndPageTest
+    /// Summary description for SearchFacetCategoryTest
     /// </summary>
     [TestClass]
-    public class Search2ndPageTest
+    public class SearchFacetCategoryTest
     {
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
@@ -26,7 +26,7 @@ namespace boxlinoTest.frontend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -56,24 +56,25 @@ namespace boxlinoTest.frontend
             HttpContext.Current = httpContext;
         }
 
-
         [TestMethod]
-        public void testFrontendSearch2ndPage()
+        public void testFrontendSearchFacetCategory()
         {
-            Search2ndPage _search2ndPage = new Search2ndPage();
+            SearchFacetCategory _searchFacetCategory = new SearchFacetCategory();
             try
             {
-                _search2ndPage.account = this.account;
-                _search2ndPage.password = this.password;
-                _search2ndPage.print = false;
-                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
-                _search2ndPage.search2ndPage();
-                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
+                _searchFacetCategory.account = this.account;
+                _searchFacetCategory.password = this.password;
+                _searchFacetCategory.print = false;
+
+                _searchFacetCategory.searchFacetCategory();
+
+                CollectionAssert.AreEqual(_searchFacetCategory.bxResponse.getHitIds().Values, new List<string>() { { "41" }, { "1940" }, { "1065" }, { "1151" }, { "1241" }, { "1321" }, { "1385" }, { "1401" }, { "1609" }, { "1801" } });
             }
             catch (Exception ex)
             {
                 Assert.Fail("Expected no exception, but got: " + ex.Message);
             }
+
         }
     }
 }

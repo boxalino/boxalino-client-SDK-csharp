@@ -9,11 +9,18 @@ namespace Boxalino.frontend
 {
     public class SearchSortField
     {
+
+        public string account { get; set; }
+        public string password { get; set; }
+
+        public bool? print { get; set; }
+
+        public BxChooseResponse bxResponse = null;
         public void searchSortField()
         {
 
-            string account = "csharp_unittest";
-            string password = "csharp_unittest";
+            string account = string.IsNullOrEmpty(this.account) ? "csharp_unittest" : this.account; // your account name
+            string password = string.IsNullOrEmpty(this.password) ? "csharp_unittest" : this.password; // your account password
 
             string domain = ""; // your web-site domain (e.g.: www.abc.com)
             List<string> logs = new List<string>(); //optional, just used here in example to collect logs
@@ -41,7 +48,7 @@ namespace Boxalino.frontend
                 bxClient.addRequest(bxRequest);
 
                 //make the query to Boxalino server and get back the response for all requests
-                BxChooseResponse bxResponse = bxClient.getResponse();
+                bxResponse = bxClient.getResponse();
 
                 //loop on the search response hit ids and print them
                 NestedDictionary<string, object> HitFieldValues = bxResponse.getHitFieldValues(new string[] { sortField });

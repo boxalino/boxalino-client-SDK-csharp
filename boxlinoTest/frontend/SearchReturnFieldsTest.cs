@@ -2,21 +2,22 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.frontend;
+using System.IO;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
-using System.IO;
+using BoxalinoWeb.frontend;
 using System.Linq;
 
 namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for Search2ndPageTest
+    /// Summary description for SearchReturnFieldsTest
     /// </summary>
     [TestClass]
-    public class Search2ndPageTest
+    public class SearchReturnFieldsTest
     {
+
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
 
@@ -26,7 +27,7 @@ namespace boxlinoTest.frontend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -45,7 +46,7 @@ namespace boxlinoTest.frontend
             httpContext.Items["AspSession"] =
                 typeof(HttpSessionState)
                 .GetConstructor(
-                                    BindingFlags.NonPublic | BindingFlags.Instance,
+                                    System.Reflection.BindingFlags.NonPublic | BindingFlags.Instance,
                                     null,
                                     CallingConventions.Standard,
                                     new[] { typeof(HttpSessionStateContainer) },
@@ -56,19 +57,20 @@ namespace boxlinoTest.frontend
             HttpContext.Current = httpContext;
         }
 
-
         [TestMethod]
-        public void testFrontendSearch2ndPage()
+        public void testFrontendSearchReturnFields()
         {
-            Search2ndPage _search2ndPage = new Search2ndPage();
+            SearchReturnFields _searchReturnFields = new SearchReturnFields();
             try
             {
-                _search2ndPage.account = this.account;
-                _search2ndPage.password = this.password;
-                _search2ndPage.print = false;
-                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
-                _search2ndPage.search2ndPage();
-                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
+                _searchReturnFields.account = this.account;
+                _searchReturnFields.password = this.password;
+                _searchReturnFields.print = false;
+
+                _searchReturnFields.searchReturnFields();
+
+                CollectionAssert.AreEqual(_searchReturnFields.bxResponse.getHitFieldValues((new List<string>() { { "products_color" } } ).ToArray())["41"]["products_color"], new List<string>() { { "Black" }, { "Gray" }, { "Yellow" } });
+                CollectionAssert.AreEqual(_searchReturnFields.bxResponse.getHitFieldValues((new List<string>() { { "products_color" } }).ToArray())["41"]["products_color"], new List<string>() { { "Gray" }, { "Orange" }, { "Yellow" } });
             }
             catch (Exception ex)
             {

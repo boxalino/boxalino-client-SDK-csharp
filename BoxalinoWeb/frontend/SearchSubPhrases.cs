@@ -18,14 +18,17 @@ namespace BoxalinoWeb.frontend
     public class SearchSubPhrases
     {
         #region declaration
-        string account  { get; set; }
-        string password { get; set; }
+        public string account { get; set; }
+        public string password { get; set; }
         string domain   { get; set; }
         string language { get; set; }
         List<string> logs   { get; set; }
         string queryText { get; set; }
-        int hitCount { get; set; }        
-        
+        int hitCount { get; set; }
+
+        public bool? print { get; set; }
+
+        public BxChooseResponse bxResponse = null;
         #endregion
 
 
@@ -44,7 +47,7 @@ namespace BoxalinoWeb.frontend
                 queryText = "women pack";// a search query
                 hitCount = 10;//a maximum number of search result to return in one page
                 logs = new List<string>();//optional, just used here in example to collect logs
-                bool print = true;
+                bool print = this.print ?? true;
 
                 //Create the Boxalino Client SDK instance
                 //N.B.: you should not create several instances of BxClient on the same page, make sure to save it in a static variable and to re-use it.
@@ -59,7 +62,7 @@ namespace BoxalinoWeb.frontend
                 //add the request
                 bxClient.addRequest(bxrequest);
                 //make the query to Boxalino server and get back the response for all requests
-                BxChooseResponse bxResponse = bxClient.getResponse();
+                bxResponse = bxClient.getResponse();
 
 
 

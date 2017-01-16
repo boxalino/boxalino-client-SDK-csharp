@@ -2,20 +2,20 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.frontend;
 using System.Web;
+using System.IO;
 using System.Web.SessionState;
 using System.Reflection;
-using System.IO;
+using BoxalinoWeb.frontend;
 using System.Linq;
 
 namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for Search2ndPageTest
+    /// Summary description for SearchFacetPriceTest
     /// </summary>
     [TestClass]
-    public class Search2ndPageTest
+    public class SearchFacetPriceTest
     {
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
@@ -26,7 +26,7 @@ namespace boxlinoTest.frontend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -45,7 +45,7 @@ namespace boxlinoTest.frontend
             httpContext.Items["AspSession"] =
                 typeof(HttpSessionState)
                 .GetConstructor(
-                                    BindingFlags.NonPublic | BindingFlags.Instance,
+                                    System.Reflection.BindingFlags.NonPublic | BindingFlags.Instance,
                                     null,
                                     CallingConventions.Standard,
                                     new[] { typeof(HttpSessionStateContainer) },
@@ -58,17 +58,25 @@ namespace boxlinoTest.frontend
 
 
         [TestMethod]
-        public void testFrontendSearch2ndPage()
+        public void testFrontendSearchFacetPrice()
         {
-            Search2ndPage _search2ndPage = new Search2ndPage();
+            SearchFacetPrice _searchFacetPrice = new SearchFacetPrice();
             try
             {
-                _search2ndPage.account = this.account;
-                _search2ndPage.password = this.password;
-                _search2ndPage.print = false;
-                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
-                _search2ndPage.search2ndPage();
-                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
+                _searchFacetPrice.account = this.account;
+                _searchFacetPrice.password = this.password;
+                _searchFacetPrice.print = false;
+
+                _searchFacetPrice.searchFacetPrice();
+                string[] princeRange = new string[_searchFacetPrice.facets.getPriceRanges().Keys.Count];
+                _searchFacetPrice.facets.getPriceRanges().Keys.CopyTo(princeRange, 0);
+                Assert.AreEqual(princeRange[0], "22-84");
+                foreach (var item in _searchFacetPrice.bxResponse.getHitFieldValues(new string[] { (_searchFacetPrice.facets.getPriceFieldName()) }))
+                {
+
+                    Assert.IsTrue(Convert.ToDouble(item.Value["discountedPrice"].Value) > 84.0);
+                    Assert.IsTrue(Convert.ToDouble(item.Value["discountedPrice"].Value) <= 22.0);
+                }
             }
             catch (Exception ex)
             {

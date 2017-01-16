@@ -12,15 +12,17 @@ namespace BoxalinoWeb.frontend
     {
 
         #region declaration
-        string account { get; set; }
-        string password { get; set; }
+        public string account { get; set; }
+        public string password { get; set; }
         string domain { get; set; }
         string language { get; set; }
         List<string> logs { get; set; }
         string queryText { get; set; }
         int hitCount { get; set; }
-        bool print { get; set; }
+        public bool? print { get; set; }
         List<string> fieldNames { get; set; }
+
+        public BxChooseResponse bxResponse = null;
         #endregion
         public void searchReturnFields()
         {
@@ -28,15 +30,16 @@ namespace BoxalinoWeb.frontend
             fieldNames = new List<string>();
             try
             {
-                account = "csharp_unittest";
-                password = "csharp_unittest";
+                string account = string.IsNullOrEmpty(this.account) ? "csharp_unittest" : this.account; // your account name
+                string password = string.IsNullOrEmpty(this.password) ? "csharp_unittest" : this.password; // your account password
+              
                 domain = "";// your web-site domain (e.g.: www.abc.com)
                 language = "en";// a valid language code (e.g.: "en", "fr", "de", "it", ...)
                 queryText = "women";// a search query
                 hitCount = 10;//a maximum number of search result to return in one page
                 logs = new List<string>();//optional, just used here in example to collect logs
                 fieldNames.Add("products_color"); //IMPORTANT: you need to put "products_" as a prefix to your field name except for standard fields: "title", "body", "discountedPrice", "standardPrice"
-                print = true;
+                bool print = this.print ?? true;
                 //Create the Boxalino Client SDK instance
                 //N.B.: you should not create several instances of BxClient on the same page, make sure to save it in a static variable and to re-use it.
                 BxClient bxClient = new BxClient(account, password, domain);
@@ -52,7 +55,7 @@ namespace BoxalinoWeb.frontend
                 //add the request
                 bxClient.addRequest(bxrequest);
                 //make the query to Boxalino server and get back the response for all requests
-                BxChooseResponse bxResponse = bxClient.getResponse();
+                bxResponse = bxClient.getResponse();
 
                 foreach (var obj in bxResponse.getHitFieldValues(fieldNames.ToArray()))
                 {

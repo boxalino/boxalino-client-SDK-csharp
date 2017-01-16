@@ -10,17 +10,19 @@ namespace BoxalinoWeb.frontend
 {
     public class SearchFacetPrice
     {
-        string account { get; set; }
-        string password { get; set; }
+        public string account { get; set; }
+        public string password { get; set; }
+        public bool? print { get; set; }
         string domain { get; set; }
         List<string> logs { get; set; }
-
         string language { get; set; }
         string queryText { get; set; }
-        int hitCount { get; set; }
-        bool print { get; set; }
-
+        int hitCount { get; set; }     
         string selectedValue { get; set; }
+
+        public BxChooseResponse bxResponse = null;
+
+        public BxFacets facets = null;
         public void searchFacetPrice()
         {
 
@@ -30,8 +32,8 @@ namespace BoxalinoWeb.frontend
             */
 
             //required parameters you should set for this example to work
-            account = "csharp_unittest";
-            password = "csharp_unittest";
+            string account = string.IsNullOrEmpty(this.account) ? "boxalino_automated_tests" : this.account; // your account name
+            string password = string.IsNullOrEmpty(this.password) ? "boxalino_automated_tests" : this.password; // your account password
             domain = ""; // your web-site domain (e.g.: www.abc.com)
             logs = new List<string>(); //optional, just used here in example to collect logs
 
@@ -45,14 +47,14 @@ namespace BoxalinoWeb.frontend
                 language = "en"; // a valid language code (e.g.: "en", "fr", "de", "it", ...)
                 queryText = "women"; // a search query
                 hitCount = 10; //a maximum number of search result to return in one page
-                print = true;
+                bool print = this.print ?? true;
                 selectedValue = HttpContext.Current.Request.Form["bx_price"] == null ? Convert.ToString(HttpContext.Current.Request.Form["bx_price"]) : null;
 
                 //create search request
                 BxSearchRequest bxRequest = new BxSearchRequest(language, queryText, hitCount);
 
                 //add a facert
-                BxFacets facets = new BxFacets();
+                facets = new BxFacets();
                 //facets.addPriceRangeFacet(selectedValue);
 
                 facets.addPriceRangeFacet(selectedValue);
@@ -66,7 +68,7 @@ namespace BoxalinoWeb.frontend
                
 
                 //make the query to Boxalino server and get back the response for all requests
-                BxChooseResponse bxResponse = bxClient.getResponse();
+                bxResponse = bxClient.getResponse();
 
                 //get the facet responses
                 facets = bxResponse.getFacets();
@@ -90,7 +92,8 @@ namespace BoxalinoWeb.frontend
                         logs.Add("Price: " + string.Join(",", (fieldValueMapItem.Value).Value));
                     }
                 }
-                if (print){
+                if (print)
+                {
                     HttpContext.Current.Response.Write(string.Join("<br>", logs));
                 }
 

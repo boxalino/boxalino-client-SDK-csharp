@@ -2,20 +2,21 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.frontend;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
 using System.IO;
+using BoxalinoWeb.frontend;
+using boxalino_client_SDK_CSharp;
 using System.Linq;
 
 namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for Search2ndPageTest
+    /// Summary description for SearchAutocompleteItemsTest
     /// </summary>
     [TestClass]
-    public class Search2ndPageTest
+    public class SearchAutocompleteItemsTest
     {
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
@@ -26,7 +27,7 @@ namespace boxlinoTest.frontend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -56,19 +57,25 @@ namespace boxlinoTest.frontend
             HttpContext.Current = httpContext;
         }
 
-
         [TestMethod]
-        public void testFrontendSearch2ndPage()
+        public void testFrontendSearchAutocompleteItems()
         {
-            Search2ndPage _search2ndPage = new Search2ndPage();
+            SearchAutocompleteItems _searchAutocompleteItems = new SearchAutocompleteItems();
             try
             {
-                _search2ndPage.account = this.account;
-                _search2ndPage.password = this.password;
-                _search2ndPage.print = false;
-                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
-                _search2ndPage.search2ndPage();
-                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
+                _searchAutocompleteItems.account = this.account;
+                _searchAutocompleteItems.password = this.password;
+                _searchAutocompleteItems.print = false;
+
+                List<string> textualSuggestions = new List<string>() { { "ida workout parachute pant" }, { "jade yoga jacket" }, { "push it messenger bag" } };
+                _searchAutocompleteItems.searchAutocompleteItems();
+
+                NestedDictionary<string, object> itemSuggestions = _searchAutocompleteItems.bxAutocompleteResponse.getBxSearchResponse().getHitFieldValues(new string[] { "title" });
+
+                Assert.AreEqual(itemSuggestions.Count, 5);
+
+                CollectionAssert.AreEqual(_searchAutocompleteItems.bxAutocompleteResponse.getTextualSuggestions(), textualSuggestions);
+
             }
             catch (Exception ex)
             {

@@ -8,8 +8,15 @@ using System.Web;
 
 namespace BoxalinoWeb.frontend
 {
-    class SearchAutocompleteItems
+   public class SearchAutocompleteItems
     {
+
+        public string account { get; set; }
+        public string password { get; set; }
+        public bool? print { get; set; }
+
+        public BxAutocompleteResponse bxAutocompleteResponse = null;
+
         public void searchAutocompleteItems()
         {
             /**
@@ -20,14 +27,14 @@ namespace BoxalinoWeb.frontend
             //include the Boxalino Client SDK php files
             //path to the lib folder with the Boxalino Client SDK and PHP Thrift Client files
             //required parameters you should set for this example to work
-            string account = "boxalino_automated_tests"; // your account name
-            string password = "boxalino_automated_tests"; // your account password
+            string account = string.IsNullOrEmpty(this.account) ? "boxalino_automated_tests" : this.account; // your account name
+            string password = string.IsNullOrEmpty(this.password) ? "boxalino_automated_tests" : this.password; // your account password
             string domain = ""; // your web-site domain (e.g.: www.abc.com)
             string[] languages = new string[] { "en" }; //declare the list of available languages
             bool isDev = false; //are the data to be pushed dev or prod data?
             bool isDelta = false; //are the data to be pushed full data (reset index) or delta (add/modify index)?
             List<string> logs = new List<string> { }; //optional, just used here in example to collect logs
-            bool print = true;
+            bool print = this.print ?? true;
             //Create the Boxalino Data SDK instance
 
             //Create the Boxalino Client SDK instance
@@ -51,7 +58,7 @@ namespace BoxalinoWeb.frontend
                 bxClient.setAutocompleteRequest(new List<BxAutocompleteRequest>() { bxRequest });
 
                // make the query to Boxalino server and get back the response for all requests
-                BxAutocompleteResponse bxAutocompleteResponse = bxClient.getAutocompleteResponse();
+                bxAutocompleteResponse = bxClient.getAutocompleteResponse();
 
                 //loop on the search response hit ids and print them
                 logs.Add("textual suggestions for \"" + queryText + "\":<br>");

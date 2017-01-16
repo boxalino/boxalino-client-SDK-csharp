@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using BoxalinoWeb.frontend;
 using System.Web;
-using System.Web.SessionState;
 using System.Reflection;
 using System.IO;
+using System.Web.SessionState;
 using System.Linq;
 
 namespace boxlinoTest.frontend
 {
     /// <summary>
-    /// Summary description for Search2ndPageTest
+    /// Summary description for SearchCorrectedTest
     /// </summary>
     [TestClass]
-    public class Search2ndPageTest
+    public class SearchCorrectedTest
     {
+
+
         private string account = "boxalino_automated_tests";
         private string password = "boxalino_automated_tests";
 
@@ -26,7 +28,7 @@ namespace boxlinoTest.frontend
             // We need to setup the Current HTTP Context as follows:            
 
             // Step 1: Setup the HTTP Request
-            var httpRequest = new HttpRequest("", "http://localhost:6989/", "");
+            var httpRequest = new System.Web.HttpRequest("", "http://localhost:6989/", "");
 
             // Step 2: Setup the HTTP Response
             var httpResponce = new HttpResponse(new StringWriter());
@@ -56,19 +58,21 @@ namespace boxlinoTest.frontend
             HttpContext.Current = httpContext;
         }
 
-
         [TestMethod]
-        public void testFrontendSearch2ndPage()
+        public void testFrontendSearchCorrected()
         {
-            Search2ndPage _search2ndPage = new Search2ndPage();
+            SearchCorrected _searchCorrected = new SearchCorrected();
             try
             {
-                _search2ndPage.account = this.account;
-                _search2ndPage.password = this.password;
-                _search2ndPage.print = false;
-                List<string> hitIds = new List<string>() { {"40"}, {"41"}, {"42"}, {"44"} };
-                _search2ndPage.search2ndPage();
-                CollectionAssert.AreEqual(_search2ndPage.bxResponse.getHitIds().Values, hitIds);
+                _searchCorrected.account = this.account;
+                _searchCorrected.password = this.password;
+                _searchCorrected.print = false;
+
+                List<string> hitIds = new List<string>() { { "41" }, { "1940" }, { "1065" }, { "1151" }, { "1241" }, { "1321" }, { "1385" }, { "1401" }, { "1609" }, { "1801" } };
+                _searchCorrected.searchCorrected();
+                Assert.AreEqual(_searchCorrected.bxResponse.areResultsCorrected(), true);
+                CollectionAssert.AreEqual(_searchCorrected.bxResponse.getHitIds().Values, hitIds);
+
             }
             catch (Exception ex)
             {

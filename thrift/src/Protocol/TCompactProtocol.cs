@@ -581,6 +581,7 @@ namespace Thrift.Protocol
         public override TList ReadListBegin()
         {
             byte size_and_type = (byte)ReadByte();
+            
             int size = (size_and_type >> 4) & 0x0f;
             if (size == 15)
             {

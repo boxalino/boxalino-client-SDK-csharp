@@ -63,6 +63,21 @@
     <Compile Include="frontend\RecommendationsSimilarTest.cs" />
     <Compile Include="frontend\Search2ndPageTest.cs" />
     <Compile Include="frontend\SearchAutocompleteBasicTest.cs" />
+    <Compile Include="frontend\SearchAutocompleteItemsBundledTest.cs" />
+    <Compile Include="frontend\SearchAutocompleteItemsTest.cs" />
+    <Compile Include="frontend\SearchAutocompletePropertyTest.cs" />
+    <Compile Include="frontend\SearchBasicTest.cs" />
+    <Compile Include="frontend\SearchCorrectedTest.cs" />
+    <Compile Include="frontend\SearchDebugRequestTest.cs" />
+    <Compile Include="frontend\SearchFacetCategoryTest.cs" />
+    <Compile Include="frontend\SearchFacetPriceTest.cs" />
+    <Compile Include="frontend\SearchFacetTest.cs" />
+    <Compile Include="frontend\SearchFilterAdvancedTest.cs" />
+    <Compile Include="frontend\SearchFilterTest.cs" />
+    <Compile Include="frontend\SearchRequestContextParametersTest.cs" />
+    <Compile Include="frontend\SearchReturnFieldsTest.cs" />
+    <Compile Include="frontend\SearchSortFieldTest.cs" />
+    <Compile Include="frontend\SearchSubPhrasesTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
