@@ -73,8 +73,8 @@ namespace boxlinoTest.frontend
                 productColor1["products_color"].Value = new List<string>() { { "Black"}, { "Gray" }, { "Yellow" } };
                 NestedDictionary<string, object> productColor2 = new NestedDictionary<string, object>();
                 productColor2["products_color"].Value = new List<string>() { { "Gray" }, { "Orange" }, { "Yellow" } };
-                Assert.AreEqual(_searchFacet.bxResponse.getHitFieldValues(_searchFacet.facetField.ToArray())["41"], productColor1);
-                Assert.AreEqual(_searchFacet.bxResponse.getHitFieldValues(_searchFacet.facetField.ToArray())["1940"], productColor1);
+                CollectionAssert.AreEqual((List<string>)(_searchFacet.bxResponse.getHitFieldValues(_searchFacet.facetField.ToArray())["41"]).Value, (List<string>)productColor1.Value);
+                CollectionAssert.AreEqual((List<string>)(_searchFacet.bxResponse.getHitFieldValues(_searchFacet.facetField.ToArray())["1940"]).Value, (List<string>)productColor1.Value);
             }
             catch (Exception ex)
             {

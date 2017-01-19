@@ -89,7 +89,7 @@ namespace BoxalinoWeb.frontend
                     logs.Add("<h3>" + item.Key + "</h3>");
                     foreach (var itemField in (item.Value))
                     {
-                        logs.Add(itemField.Key + ": " + string.Join(",", itemField.Value));
+                        logs.Add(itemField.Key + ": " + string.Join(",", (List<string>)itemField.Value.Value));
                     }
                 }
                 if (print){

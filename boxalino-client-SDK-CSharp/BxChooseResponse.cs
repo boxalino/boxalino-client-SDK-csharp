@@ -197,7 +197,7 @@ namespace boxalino_client_SDK_CSharp
                             if (!string.IsNullOrEmpty(item.Values[field].FirstOrDefault() ?? string.Empty))
                             {
 
-                                fieldValues[item.Values["id"][0]][field].Value = item.Values[field].FirstOrDefault().ToString();
+                                fieldValues[item.Values["id"][0]][field].Value = item.Values[field];
 
                             }
                         }

@@ -69,8 +69,8 @@ namespace boxlinoTest.frontend
 
                 _searchReturnFields.searchReturnFields();
 
-                CollectionAssert.AreEqual(_searchReturnFields.bxResponse.getHitFieldValues((new List<string>() { { "products_color" } } ).ToArray())["41"]["products_color"], new List<string>() { { "Black" }, { "Gray" }, { "Yellow" } });
-                CollectionAssert.AreEqual(_searchReturnFields.bxResponse.getHitFieldValues((new List<string>() { { "products_color" } }).ToArray())["41"]["products_color"], new List<string>() { { "Gray" }, { "Orange" }, { "Yellow" } });
+                CollectionAssert.AreEqual((List<string>)_searchReturnFields.bxResponse.getHitFieldValues((new List<string>() { { "products_color" } }).ToArray())["41"]["products_color"].Value, new List<string>() { { "Black" }, { "Gray" }, { "Yellow" } });
+                CollectionAssert.AreEqual((List<string>)_searchReturnFields.bxResponse.getHitFieldValues((new List<string>() { { "products_color" } }).ToArray())["1940"]["products_color"].Value, new List<string>() { { "Gray" }, { "Orange" }, { "Yellow" } });
             }
             catch (Exception ex)
             {
