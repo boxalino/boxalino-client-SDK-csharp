@@ -89,7 +89,7 @@ namespace BoxalinoWeb.frontend
                 foreach (var item in  bxResponse.getHitFieldValues((new List<string>(){facets.getPriceFieldName()}).ToArray())) {
 		          logs.Add("<h3>"+item.Key+"</h3>");
                     foreach (var fieldValueMapItem  in item.Value) {
-                        logs.Add("Price: " + string.Join(",", (fieldValueMapItem.Value).Value));
+                        logs.Add("Price: " + string.Join(",", (List<string>)fieldValueMapItem.Value.Value));
                     }
                 }
                 if (print)

@@ -70,12 +70,13 @@ namespace boxlinoTest.frontend
                 _searchFacetPrice.searchFacetPrice();
                 string[] princeRange = new string[_searchFacetPrice.facets.getPriceRanges().Keys.Count];
                 _searchFacetPrice.facets.getPriceRanges().Keys.CopyTo(princeRange, 0);
-                Assert.AreEqual(princeRange[0], "22-84");
+                string[] princeRange_test = { "22.0-37.5", "37.5-53", "53-68.5", "68.5-84" };
+                Assert.AreEqual(princeRange[0], princeRange_test[0]);
                 foreach (var item in _searchFacetPrice.bxResponse.getHitFieldValues(new string[] { (_searchFacetPrice.facets.getPriceFieldName()) }))
                 {
 
-                    Assert.IsTrue(Convert.ToDouble(item.Value["discountedPrice"].Value) > 84.0);
-                    Assert.IsTrue(Convert.ToDouble(item.Value["discountedPrice"].Value) <= 22.0);
+                    Assert.IsTrue(Convert.ToDouble(((List<string>)item.Value["discountedPrice"].Value)[0]) > 22.0);
+                    Assert.IsTrue(Convert.ToDouble(((List<string>)item.Value["discountedPrice"].Value)[0]) <= 84.0);
                 }
             }
             catch (Exception ex)
