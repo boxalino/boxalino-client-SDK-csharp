@@ -16,54 +16,51 @@ using Thrift.Protocol;
 using Thrift.Transport;
 
 
-/// <summary>
-/// unique identifier of the customer
-/// </summary>
 #if !SILVERLIGHT
 [Serializable]
 #endif
-public partial class UserRecord : TBase
+public partial class RecommendationVariant : TBase
 {
-  private string _username;
-  private string _apiKey;
-  private string _apiSecret;
+  private string _id;
+  private string _mode;
+  private List<string> _scenarioIds;
 
-  public string Username
+  public string Id
   {
     get
     {
-      return _username;
+      return _id;
     }
     set
     {
-      __isset.username = true;
-      this._username = value;
+      __isset.id = true;
+      this._id = value;
     }
   }
 
-  public string ApiKey
+  public string Mode
   {
     get
     {
-      return _apiKey;
+      return _mode;
     }
     set
     {
-      __isset.apiKey = true;
-      this._apiKey = value;
+      __isset.mode = true;
+      this._mode = value;
     }
   }
 
-  public string ApiSecret
+  public List<string> ScenarioIds
   {
     get
     {
-      return _apiSecret;
+      return _scenarioIds;
     }
     set
     {
-      __isset.apiSecret = true;
-      this._apiSecret = value;
+      __isset.scenarioIds = true;
+      this._scenarioIds = value;
     }
   }
 
@@ -73,12 +70,14 @@ public partial class UserRecord : TBase
   [Serializable]
   #endif
   public struct Isset {
-    public bool username;
-    public bool apiKey;
-    public bool apiSecret;
+    public bool id;
+    public bool mode;
+    public bool scenarioIds;
   }
 
-  public UserRecord() {
+  public RecommendationVariant() {
+    this._mode = "firstfull";
+    this.__isset.mode = true;
   }
 
   public void Read (TProtocol iprot)
@@ -96,23 +95,33 @@ public partial class UserRecord : TBase
         }
         switch (field.ID)
         {
-          case 1:
+          case 11:
             if (field.Type == TType.String) {
-              Username = iprot.ReadString();
+              Id = iprot.ReadString();
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
             break;
-          case 10:
+          case 21:
             if (field.Type == TType.String) {
-              ApiKey = iprot.ReadString();
+              Mode = iprot.ReadString();
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
             break;
-          case 20:
-            if (field.Type == TType.String) {
-              ApiSecret = iprot.ReadString();
+          case 31:
+            if (field.Type == TType.List) {
+              {
+                ScenarioIds = new List<string>();
+                TList _list15 = iprot.ReadListBegin();
+                for( int _i16 = 0; _i16 < _list15.Count; ++_i16)
+                {
+                  string _elem17;
+                  _elem17 = iprot.ReadString();
+                  ScenarioIds.Add(_elem17);
+                }
+                iprot.ReadListEnd();
+              }
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
@@ -135,31 +144,38 @@ public partial class UserRecord : TBase
     oprot.IncrementRecursionDepth();
     try
     {
-      TStruct struc = new TStruct("UserRecord");
+      TStruct struc = new TStruct("RecommendationVariant");
       oprot.WriteStructBegin(struc);
       TField field = new TField();
-      if (Username != null && __isset.username) {
-        field.Name = "username";
+      if (Id != null && __isset.id) {
+        field.Name = "id";
         field.Type = TType.String;
-        field.ID = 1;
+        field.ID = 11;
         oprot.WriteFieldBegin(field);
-        oprot.WriteString(Username);
+        oprot.WriteString(Id);
         oprot.WriteFieldEnd();
       }
-      if (ApiKey != null && __isset.apiKey) {
-        field.Name = "apiKey";
+      if (Mode != null && __isset.mode) {
+        field.Name = "mode";
         field.Type = TType.String;
-        field.ID = 10;
+        field.ID = 21;
         oprot.WriteFieldBegin(field);
-        oprot.WriteString(ApiKey);
+        oprot.WriteString(Mode);
         oprot.WriteFieldEnd();
       }
-      if (ApiSecret != null && __isset.apiSecret) {
-        field.Name = "apiSecret";
-        field.Type = TType.String;
-        field.ID = 20;
+      if (ScenarioIds != null && __isset.scenarioIds) {
+        field.Name = "scenarioIds";
+        field.Type = TType.List;
+        field.ID = 31;
         oprot.WriteFieldBegin(field);
-        oprot.WriteString(ApiSecret);
+        {
+          oprot.WriteListBegin(new TList(TType.String, ScenarioIds.Count));
+          foreach (string _iter18 in ScenarioIds)
+          {
+            oprot.WriteString(_iter18);
+          }
+          oprot.WriteListEnd();
+        }
         oprot.WriteFieldEnd();
       }
       oprot.WriteFieldStop();
@@ -172,25 +188,25 @@ public partial class UserRecord : TBase
   }
 
   public override string ToString() {
-    StringBuilder __sb = new StringBuilder("UserRecord(");
+    StringBuilder __sb = new StringBuilder("RecommendationVariant(");
     bool __first = true;
-    if (Username != null && __isset.username) {
+    if (Id != null && __isset.id) {
       if(!__first) { __sb.Append(", "); }
       __first = false;
-      __sb.Append("Username: ");
-      __sb.Append(Username);
+      __sb.Append("Id: ");
+      __sb.Append(Id);
     }
-    if (ApiKey != null && __isset.apiKey) {
+    if (Mode != null && __isset.mode) {
       if(!__first) { __sb.Append(", "); }
       __first = false;
-      __sb.Append("ApiKey: ");
-      __sb.Append(ApiKey);
+      __sb.Append("Mode: ");
+      __sb.Append(Mode);
     }
-    if (ApiSecret != null && __isset.apiSecret) {
+    if (ScenarioIds != null && __isset.scenarioIds) {
       if(!__first) { __sb.Append(", "); }
       __first = false;
-      __sb.Append("ApiSecret: ");
-      __sb.Append(ApiSecret);
+      __sb.Append("ScenarioIds: ");
+      __sb.Append(ScenarioIds);
     }
     __sb.Append(")");
     return __sb.ToString();

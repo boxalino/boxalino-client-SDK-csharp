@@ -16,17 +16,15 @@ using Thrift.Protocol;
 using Thrift.Transport;
 
 
-/// <summary>
-/// unique identifier of the customer
-/// </summary>
 #if !SILVERLIGHT
 [Serializable]
 #endif
-public partial class UserRecord : TBase
+public partial class AuthEntry : TBase
 {
   private string _username;
   private string _apiKey;
   private string _apiSecret;
+  private List<string> _solrIndexPatterns;
 
   public string Username
   {
@@ -67,6 +65,19 @@ public partial class UserRecord : TBase
     }
   }
 
+  public List<string> SolrIndexPatterns
+  {
+    get
+    {
+      return _solrIndexPatterns;
+    }
+    set
+    {
+      __isset.solrIndexPatterns = true;
+      this._solrIndexPatterns = value;
+    }
+  }
+
 
   public Isset __isset;
   #if !SILVERLIGHT
@@ -76,9 +87,10 @@ public partial class UserRecord : TBase
     public bool username;
     public bool apiKey;
     public bool apiSecret;
+    public bool solrIndexPatterns;
   }
 
-  public UserRecord() {
+  public AuthEntry() {
   }
 
   public void Read (TProtocol iprot)
@@ -96,23 +108,40 @@ public partial class UserRecord : TBase
         }
         switch (field.ID)
         {
-          case 1:
+          case 11:
             if (field.Type == TType.String) {
               Username = iprot.ReadString();
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
             break;
-          case 10:
+          case 21:
             if (field.Type == TType.String) {
               ApiKey = iprot.ReadString();
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
             break;
-          case 20:
+          case 31:
             if (field.Type == TType.String) {
               ApiSecret = iprot.ReadString();
+            } else { 
+              TProtocolUtil.Skip(iprot, field.Type);
+            }
+            break;
+          case 41:
+            if (field.Type == TType.List) {
+              {
+                SolrIndexPatterns = new List<string>();
+                TList _list19 = iprot.ReadListBegin();
+                for( int _i20 = 0; _i20 < _list19.Count; ++_i20)
+                {
+                  string _elem21;
+                  _elem21 = iprot.ReadString();
+                  SolrIndexPatterns.Add(_elem21);
+                }
+                iprot.ReadListEnd();
+              }
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
@@ -135,13 +164,13 @@ public partial class UserRecord : TBase
     oprot.IncrementRecursionDepth();
     try
     {
-      TStruct struc = new TStruct("UserRecord");
+      TStruct struc = new TStruct("AuthEntry");
       oprot.WriteStructBegin(struc);
       TField field = new TField();
       if (Username != null && __isset.username) {
         field.Name = "username";
         field.Type = TType.String;
-        field.ID = 1;
+        field.ID = 11;
         oprot.WriteFieldBegin(field);
         oprot.WriteString(Username);
         oprot.WriteFieldEnd();
@@ -149,7 +178,7 @@ public partial class UserRecord : TBase
       if (ApiKey != null && __isset.apiKey) {
         field.Name = "apiKey";
         field.Type = TType.String;
-        field.ID = 10;
+        field.ID = 21;
         oprot.WriteFieldBegin(field);
         oprot.WriteString(ApiKey);
         oprot.WriteFieldEnd();
@@ -157,9 +186,24 @@ public partial class UserRecord : TBase
       if (ApiSecret != null && __isset.apiSecret) {
         field.Name = "apiSecret";
         field.Type = TType.String;
-        field.ID = 20;
+        field.ID = 31;
         oprot.WriteFieldBegin(field);
         oprot.WriteString(ApiSecret);
+        oprot.WriteFieldEnd();
+      }
+      if (SolrIndexPatterns != null && __isset.solrIndexPatterns) {
+        field.Name = "solrIndexPatterns";
+        field.Type = TType.List;
+        field.ID = 41;
+        oprot.WriteFieldBegin(field);
+        {
+          oprot.WriteListBegin(new TList(TType.String, SolrIndexPatterns.Count));
+          foreach (string _iter22 in SolrIndexPatterns)
+          {
+            oprot.WriteString(_iter22);
+          }
+          oprot.WriteListEnd();
+        }
         oprot.WriteFieldEnd();
       }
       oprot.WriteFieldStop();
@@ -172,7 +216,7 @@ public partial class UserRecord : TBase
   }
 
   public override string ToString() {
-    StringBuilder __sb = new StringBuilder("UserRecord(");
+    StringBuilder __sb = new StringBuilder("AuthEntry(");
     bool __first = true;
     if (Username != null && __isset.username) {
       if(!__first) { __sb.Append(", "); }
@@ -191,6 +235,12 @@ public partial class UserRecord : TBase
       __first = false;
       __sb.Append("ApiSecret: ");
       __sb.Append(ApiSecret);
+    }
+    if (SolrIndexPatterns != null && __isset.solrIndexPatterns) {
+      if(!__first) { __sb.Append(", "); }
+      __first = false;
+      __sb.Append("SolrIndexPatterns: ");
+      __sb.Append(SolrIndexPatterns);
     }
     __sb.Append(")");
     return __sb.ToString();

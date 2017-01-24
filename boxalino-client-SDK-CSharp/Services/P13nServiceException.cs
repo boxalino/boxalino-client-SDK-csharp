@@ -16,43 +16,19 @@ using Thrift.Protocol;
 using Thrift.Transport;
 
 
-/// <summary>
-/// Server response for one ChoiceUpdateRequest
-/// </summary>
 #if !SILVERLIGHT
 [Serializable]
 #endif
-public partial class ChoiceUpdateResponse : TBase
+public partial class P13nServiceException : TException, TBase
 {
-  private string _choiceId;
 
-  /// <summary>
-  /// Identifier of the changed choice. If no id is given in corresponding
-  /// ChoiceUpdateRequest, new choice (and new id) will be created and retuned.
-  /// </summary>
-  public string ChoiceId
-  {
-    get
-    {
-      return _choiceId;
-    }
-    set
-    {
-      __isset.choiceId = true;
-      this._choiceId = value;
-    }
+  public string Message { get; set; }
+
+  public P13nServiceException() {
   }
 
-
-  public Isset __isset;
-  #if !SILVERLIGHT
-  [Serializable]
-  #endif
-  public struct Isset {
-    public bool choiceId;
-  }
-
-  public ChoiceUpdateResponse() {
+  public P13nServiceException(string message) : this() {
+    this.Message = message;
   }
 
   public void Read (TProtocol iprot)
@@ -60,6 +36,7 @@ public partial class ChoiceUpdateResponse : TBase
     iprot.IncrementRecursionDepth();
     try
     {
+      bool isset_message = false;
       TField field;
       iprot.ReadStructBegin();
       while (true)
@@ -70,9 +47,10 @@ public partial class ChoiceUpdateResponse : TBase
         }
         switch (field.ID)
         {
-          case 11:
+          case 1:
             if (field.Type == TType.String) {
-              ChoiceId = iprot.ReadString();
+              Message = iprot.ReadString();
+              isset_message = true;
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
@@ -84,6 +62,8 @@ public partial class ChoiceUpdateResponse : TBase
         iprot.ReadFieldEnd();
       }
       iprot.ReadStructEnd();
+      if (!isset_message)
+        throw new TProtocolException(TProtocolException.INVALID_DATA);
     }
     finally
     {
@@ -95,17 +75,15 @@ public partial class ChoiceUpdateResponse : TBase
     oprot.IncrementRecursionDepth();
     try
     {
-      TStruct struc = new TStruct("ChoiceUpdateResponse");
+      TStruct struc = new TStruct("P13nServiceException");
       oprot.WriteStructBegin(struc);
       TField field = new TField();
-      if (ChoiceId != null && __isset.choiceId) {
-        field.Name = "choiceId";
-        field.Type = TType.String;
-        field.ID = 11;
-        oprot.WriteFieldBegin(field);
-        oprot.WriteString(ChoiceId);
-        oprot.WriteFieldEnd();
-      }
+      field.Name = "message";
+      field.Type = TType.String;
+      field.ID = 1;
+      oprot.WriteFieldBegin(field);
+      oprot.WriteString(Message);
+      oprot.WriteFieldEnd();
       oprot.WriteFieldStop();
       oprot.WriteStructEnd();
     }
@@ -116,14 +94,9 @@ public partial class ChoiceUpdateResponse : TBase
   }
 
   public override string ToString() {
-    StringBuilder __sb = new StringBuilder("ChoiceUpdateResponse(");
-    bool __first = true;
-    if (ChoiceId != null && __isset.choiceId) {
-      if(!__first) { __sb.Append(", "); }
-      __first = false;
-      __sb.Append("ChoiceId: ");
-      __sb.Append(ChoiceId);
-    }
+    StringBuilder __sb = new StringBuilder("P13nServiceException(");
+    __sb.Append(", Message: ");
+    __sb.Append(Message);
     __sb.Append(")");
     return __sb.ToString();
   }

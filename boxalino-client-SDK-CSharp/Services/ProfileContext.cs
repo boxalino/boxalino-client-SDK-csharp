@@ -16,27 +16,37 @@ using Thrift.Protocol;
 using Thrift.Transport;
 
 
-/// <summary>
-/// list of personalized variants. Item's index corresponds to the index of the
-/// ChoiceInquiry
-/// </summary>
 #if !SILVERLIGHT
 [Serializable]
 #endif
-public partial class ChoiceResponse : TBase
+public partial class ProfileContext : TBase
 {
-  private List<Variant> _variants;
+  private string _profileId;
+  private RequestContext _requestContext;
 
-  public List<Variant> Variants
+  public string ProfileId
   {
     get
     {
-      return _variants;
+      return _profileId;
     }
     set
     {
-      __isset.variants = true;
-      this._variants = value;
+      __isset.profileId = true;
+      this._profileId = value;
+    }
+  }
+
+  public RequestContext RequestContext
+  {
+    get
+    {
+      return _requestContext;
+    }
+    set
+    {
+      __isset.requestContext = true;
+      this._requestContext = value;
     }
   }
 
@@ -46,10 +56,11 @@ public partial class ChoiceResponse : TBase
   [Serializable]
   #endif
   public struct Isset {
-    public bool variants;
+    public bool profileId;
+    public bool requestContext;
   }
 
-  public ChoiceResponse() {
+  public ProfileContext() {
   }
 
   public void Read (TProtocol iprot)
@@ -68,19 +79,16 @@ public partial class ChoiceResponse : TBase
         switch (field.ID)
         {
           case 1:
-            if (field.Type == TType.List) {
-              {
-                Variants = new List<Variant>();
-                TList _list113 = iprot.ReadListBegin();
-                for( int _i114 = 0; _i114 < _list113.Count; ++_i114)
-                {
-                  Variant _elem115;
-                  _elem115 = new Variant();
-                  _elem115.Read(iprot);
-                  Variants.Add(_elem115);
-                }
-                iprot.ReadListEnd();
-              }
+            if (field.Type == TType.String) {
+              ProfileId = iprot.ReadString();
+            } else { 
+              TProtocolUtil.Skip(iprot, field.Type);
+            }
+            break;
+          case 2:
+            if (field.Type == TType.Struct) {
+              RequestContext = new RequestContext();
+              RequestContext.Read(iprot);
             } else { 
               TProtocolUtil.Skip(iprot, field.Type);
             }
@@ -103,22 +111,23 @@ public partial class ChoiceResponse : TBase
     oprot.IncrementRecursionDepth();
     try
     {
-      TStruct struc = new TStruct("ChoiceResponse");
+      TStruct struc = new TStruct("ProfileContext");
       oprot.WriteStructBegin(struc);
       TField field = new TField();
-      if (Variants != null && __isset.variants) {
-        field.Name = "variants";
-        field.Type = TType.List;
+      if (ProfileId != null && __isset.profileId) {
+        field.Name = "profileId";
+        field.Type = TType.String;
         field.ID = 1;
         oprot.WriteFieldBegin(field);
-        {
-          oprot.WriteListBegin(new TList(TType.Struct, Variants.Count));
-          foreach (Variant _iter116 in Variants)
-          {
-            _iter116.Write(oprot);
-          }
-          oprot.WriteListEnd();
-        }
+        oprot.WriteString(ProfileId);
+        oprot.WriteFieldEnd();
+      }
+      if (RequestContext != null && __isset.requestContext) {
+        field.Name = "requestContext";
+        field.Type = TType.Struct;
+        field.ID = 2;
+        oprot.WriteFieldBegin(field);
+        RequestContext.Write(oprot);
         oprot.WriteFieldEnd();
       }
       oprot.WriteFieldStop();
@@ -131,13 +140,19 @@ public partial class ChoiceResponse : TBase
   }
 
   public override string ToString() {
-    StringBuilder __sb = new StringBuilder("ChoiceResponse(");
+    StringBuilder __sb = new StringBuilder("ProfileContext(");
     bool __first = true;
-    if (Variants != null && __isset.variants) {
+    if (ProfileId != null && __isset.profileId) {
       if(!__first) { __sb.Append(", "); }
       __first = false;
-      __sb.Append("Variants: ");
-      __sb.Append(Variants);
+      __sb.Append("ProfileId: ");
+      __sb.Append(ProfileId);
+    }
+    if (RequestContext != null && __isset.requestContext) {
+      if(!__first) { __sb.Append(", "); }
+      __first = false;
+      __sb.Append("RequestContext: ");
+      __sb.Append(RequestContext== null ? "<null>" : RequestContext.ToString());
     }
     __sb.Append(")");
     return __sb.ToString();
