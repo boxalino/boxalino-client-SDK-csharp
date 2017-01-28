@@ -303,7 +303,6 @@ C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\System.Web.Optimization.dll
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\System.Web.Providers.dll
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\WebGrease.dll
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Thrift.dll
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\boxalino-client-SDK-CSharp.pdb
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Microsoft.AI.DependencyCollector.xml
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Microsoft.AI.ServerTelemetryChannel.xml
@@ -330,7 +329,8 @@ C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Microsoft.Owin.Security.OAuth.xml
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Thrift.pdb
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\obj\Debug\BoxalinoWeb.csprojResolveAssemblyReference.cache
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\obj\Debug\BoxalinoWeb.dll
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\obj\Debug\BoxalinoWeb.pdb
+C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Thrift45.dll
+C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\BoxalinoWeb\bin\Thrift45.pdb

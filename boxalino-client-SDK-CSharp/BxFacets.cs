@@ -43,7 +43,7 @@ namespace boxalino_client_SDK_CSharp
                 facetRequest.FieldName = item.Key.ToString();
                 facetRequest.Numerical = type == "ranged" ? true : type == "numerical" ? true : false;
                 facetRequest.Range = type == "ranged" ? true : false;
-                facetRequest.boundsOnly = Convert.ToBoolean(item.Value["boundsOnly"].Value);
+                facetRequest.BoundsOnly = Convert.ToBoolean(item.Value["boundsOnly"].Value);
                 facetRequest.SelectedValues = this.facetSelectedValue(item.Value.ToString(), type);
                 facetRequest.SortOrder = (FacetSortOrder)((order == 1) ? 1 : 2);
                 thriftFacets.Add(facetRequest);

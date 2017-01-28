@@ -42,8 +42,6 @@ namespace Thrift.Transport
 
         private int readTimeout = 30000;
 
-        protected string authorizationString;
-
         private IDictionary<String, String> customHeaders = new Dictionary<string, string>();
 
 #if !SILVERLIGHT
@@ -170,8 +168,8 @@ namespace Thrift.Transport
                 HttpWebRequest connection = CreateRequest();
 
                 byte[] data = outputStream.ToArray();
-               // connection.ContentLength = data.Length;
-                connection.Headers.Add("Authorization", "Basic " +this.authorizationString);
+                connection.ContentLength = data.Length;
+
                 using (Stream requestStream = connection.GetRequestStream())
                 {
                     requestStream.Write(data, 0, data.Length);
@@ -179,7 +177,6 @@ namespace Thrift.Transport
                     // Resolve HTTP hang that can happens after successive calls by making sure
                     // that we release the response and response stream. To support this, we copy
                     // the response to a memory stream.
-
                     using (var response = connection.GetResponse())
                     {
                         using (var responseStream = response.GetResponseStream())
@@ -340,25 +337,13 @@ namespace Thrift.Transport
         }
 
         // Based on http://msmvps.com/blogs/luisabreu/archive/2009/06/15/multithreading-implementing-the-iasyncresult-interface.aspx
-
-        public void setAuthorization(string username, string password)
-        {
-            this.authorizationString = base64Encode(username + ':' + password);
-        }
-
-        public string base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-
         class FlushAsyncResult : IAsyncResult
         {
             private volatile Boolean _isCompleted;
             private ManualResetEvent _evt;
             private readonly AsyncCallback _cbMethod;
             private readonly Object _state;
-         
+
             public FlushAsyncResult(AsyncCallback cbMethod, Object state)
             {
                 _cbMethod = cbMethod;
@@ -420,7 +405,19 @@ namespace Thrift.Transport
                     _cbMethod(this);
                 }
             }
-           
+        }
+
+        // Based on http://msmvps.com/blogs/luisabreu/archive/2009/06/15/multithreading-implementing-the-iasyncresult-interface.aspx
+        protected string authorizationString;
+
+        public void setAuthorization(string username, string password)
+        {
+            this.authorizationString = base64Encode(username + ':' + password);
+        }
+        public string base64Encode(string plainText)
+        {
+            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
+            return System.Convert.ToBase64String(plainTextBytes);
         }
 
 #region " IDisposable Support "

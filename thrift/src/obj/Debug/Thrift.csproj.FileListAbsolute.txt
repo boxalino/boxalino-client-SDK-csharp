@@ -1,20 +1,9 @@
-E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\bin\Debug\Thrift.dll
-E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\bin\Debug\Thrift.pdb
-E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\obj\Debug\Thrift.dll
-E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\obj\Debug\Thrift.pdb
-E:\TeamServerProjects\Workspace\Boxalino\Boxalino\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
-C:\Users\HASHIR\Desktop\Boxalino\thrift\src\bin\Debug\Thrift.dll
-C:\Users\HASHIR\Desktop\Boxalino\thrift\src\bin\Debug\Thrift.pdb
-C:\Users\HASHIR\Desktop\Boxalino\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
-C:\Users\HASHIR\Desktop\Boxalino\thrift\src\obj\Debug\Thrift.dll
-C:\Users\HASHIR\Desktop\Boxalino\thrift\src\obj\Debug\Thrift.pdb
-E:\Github\Boxalino\thrift\src\bin\Debug\Thrift.dll
-E:\Github\Boxalino\thrift\src\bin\Debug\Thrift.pdb
-E:\Github\Boxalino\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
-E:\Github\Boxalino\thrift\src\obj\Debug\Thrift.dll
-E:\Github\Boxalino\thrift\src\obj\Debug\Thrift.pdb
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\thrift\src\bin\Debug\Thrift.dll
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\thrift\src\bin\Debug\Thrift.pdb
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\thrift\src\obj\Debug\Thrift.dll
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\thrift\src\obj\Debug\Thrift.pdb
-C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
+F:\p13n-client-csharp-master (2)\p13n-client-csharp-master\lib\thrift\src\bin\Debug\Thrift.dll
+F:\p13n-client-csharp-master (2)\p13n-client-csharp-master\lib\thrift\src\bin\Debug\Thrift.pdb
+F:\p13n-client-csharp-master (2)\p13n-client-csharp-master\lib\thrift\src\obj\Debug\Thrift.dll
+F:\p13n-client-csharp-master (2)\p13n-client-csharp-master\lib\thrift\src\obj\Debug\Thrift.pdb
+F:\boxalino-client-SDK-csharp-master\thrift\src\bin\Debug\Thrift.dll
+F:\boxalino-client-SDK-csharp-master\thrift\src\bin\Debug\Thrift.pdb
+F:\boxalino-client-SDK-csharp-master\thrift\src\obj\Debug\Thrift.csprojResolveAssemblyReference.cache
+F:\boxalino-client-SDK-csharp-master\thrift\src\obj\Debug\Thrift.dll
+F:\boxalino-client-SDK-csharp-master\thrift\src\obj\Debug\Thrift.pdb

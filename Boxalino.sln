@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boxalino_client_SDK_CSharp", "boxalino-client-SDK-CSharp\boxalino_client_SDK_CSharp.csproj", "{2B570914-D503-4684-8FAE-0DA64FB7261D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thrift", "thrift\src\Thrift.csproj", "{499EB63C-D74C-47E8-AE48-A2FC94538E9D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boxlinoTest", "boxlinoTest\boxlinoTest.csproj", "{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxalinoWeb", "BoxalinoWeb\BoxalinoWeb.csproj", "{C625D316-8241-42B6-A139-924AFD395179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thrift.45", "thrift\src\Thrift.45.csproj", "{EBCE35DA-CF6A-42BC-A357-A9C09B534299}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boxalino_client_SDK_CSharp", "boxalino-client-SDK-CSharp\boxalino_client_SDK_CSharp.csproj", "{2B570914-D503-4684-8FAE-0DA64FB7261D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{499EB63C-D74C-47E8-AE48-A2FC94538E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{499EB63C-D74C-47E8-AE48-A2FC94538E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{499EB63C-D74C-47E8-AE48-A2FC94538E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{499EB63C-D74C-47E8-AE48-A2FC94538E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,26 +25,16 @@ Global
 		{C625D316-8241-42B6-A139-924AFD395179}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C625D316-8241-42B6-A139-924AFD395179}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C625D316-8241-42B6-A139-924AFD395179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 5
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = http://srvnextolive1:8080/tfs/nextolivecollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = boxalino-client-SDK-CSharp\\boxalino_client_SDK_CSharp.csproj
-		SccProjectName1 = boxalino-client-SDK-CSharp
-		SccLocalPath1 = boxalino-client-SDK-CSharp
-		SccProjectUniqueName2 = BoxalinoWeb\\BoxalinoWeb.csproj
-		SccProjectName2 = BoxalinoWeb
-		SccLocalPath2 = BoxalinoWeb
-		SccProjectUniqueName3 = boxlinoTest\\boxlinoTest.csproj
-		SccProjectName3 = boxlinoTest
-		SccLocalPath3 = boxlinoTest
-		SccProjectUniqueName4 = thrift\\src\\Thrift.csproj
-		SccProjectName4 = thrift/src
-		SccLocalPath4 = thrift\\src
 	EndGlobalSection
 EndGlobal

@@ -3,6 +3,7 @@ using boxalino_client_SDK_CSharp.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -59,9 +60,8 @@ namespace BoxalinoWeb.frontend
 
                 //set the request
                 bxClient.setAutocompleteRequest(new List<BxAutocompleteRequest>() { bxRequest });
-                //make the query to Boxalino server and get back the response for all requests
+                //make the query to Boxalino server and get back the response for all requests               
 
-               
                 bxAutocompleteResponse = (BxAutocompleteResponse)bxClient.getAutocompleteResponse();
 
                 //loop on the search response hit ids and print them
@@ -85,10 +85,17 @@ namespace BoxalinoWeb.frontend
                 HttpContext.Current.Response.Write(ex.Message);
             }
         }
+      
 
         public void Print<T>(T x)
         {
-            string json = Newtonsoft.Json.JsonConvert.SerializeObject(x, Newtonsoft.Json.Formatting.Indented);
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(x,
+                    Newtonsoft.Json.Formatting.None,
+                    new Newtonsoft.Json.JsonSerializerSettings
+                    {
+                        NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore,
+                        Formatting = Newtonsoft.Json.Formatting.Indented
+                    }); ;
             HttpContext.Current.Response.Write("<pre>" + json + "</pre>");
         }
 

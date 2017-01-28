@@ -113,9 +113,9 @@ namespace boxalino_client_SDK_CSharp
         public Dictionary<string, AutocompleteHit> getPropertyHits(string field)
         {
             
-            foreach (PropertyResult propertyResult in this.getResponse().propertyResults)
+            foreach (PropertyResult propertyResult in this.getResponse().PropertyResults)
             {
-                if (propertyResult.name == field)
+                if (propertyResult.Name == field)
                 {
                     return (Dictionary<string, AutocompleteHit>)propertyResult.Hits.ToLookup(x => x);
                 }

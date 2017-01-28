@@ -182,9 +182,9 @@ namespace boxalino_client_SDK_CSharp
         public void addPropertyQuery(string field, int hitCount, bool evaluateTotal = false)
         {
             PropertyQuery propertyQuery = new PropertyQuery();
-            propertyQuery.name = field;
-            propertyQuery.hitCount = hitCount;
-            propertyQuery.evaluateTotal = evaluateTotal;
+            propertyQuery.Name = field;
+            propertyQuery.HitCount = hitCount;
+            propertyQuery.EvaluateTotal = evaluateTotal;
             this.propertyQueries.Add(propertyQuery);
         }
 

@@ -90,6 +90,10 @@
       <Project>{c625d316-8241-42b6-a139-924afd395179}</Project>
       <Name>BoxalinoWeb</Name>
     </ProjectReference>
+    <ProjectReference Include="..\thrift\src\Thrift.45.csproj">
+      <Project>{ebce35da-cf6a-42bc-a357-a9c09b534299}</Project>
+      <Name>Thrift.45</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

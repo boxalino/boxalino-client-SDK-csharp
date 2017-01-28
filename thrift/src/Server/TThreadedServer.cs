@@ -40,8 +40,12 @@ namespace Thrift.Server
     private object clientLock;
     private Thread workerThread;
 
+    public int ClientThreadsCount  {
+        get { return clientThreads.Count; }
+    }
+
     public TThreadedServer(TProcessor processor, TServerTransport serverTransport)
-      : this(processor, serverTransport,
+        : this(new TSingletonProcessorFactory(processor), serverTransport,
          new TTransportFactory(), new TTransportFactory(),
          new TBinaryProtocol.Factory(), new TBinaryProtocol.Factory(),
          DEFAULT_MAX_THREADS, DefaultLogDelegate)
@@ -49,7 +53,7 @@ namespace Thrift.Server
     }
 
     public TThreadedServer(TProcessor processor, TServerTransport serverTransport, LogDelegate logDelegate)
-      : this(processor, serverTransport,
+        : this(new TSingletonProcessorFactory(processor), serverTransport,
          new TTransportFactory(), new TTransportFactory(),
          new TBinaryProtocol.Factory(), new TBinaryProtocol.Factory(),
          DEFAULT_MAX_THREADS, logDelegate)
@@ -61,21 +65,31 @@ namespace Thrift.Server
                  TServerTransport serverTransport,
                  TTransportFactory transportFactory,
                  TProtocolFactory protocolFactory)
-      : this(processor, serverTransport,
+        : this(new TSingletonProcessorFactory(processor), serverTransport,
          transportFactory, transportFactory,
          protocolFactory, protocolFactory,
          DEFAULT_MAX_THREADS, DefaultLogDelegate)
     {
     }
 
-    public TThreadedServer(TProcessor processor,
+    public TThreadedServer(TProcessorFactory processorFactory,
+           TServerTransport serverTransport,
+           TTransportFactory transportFactory,
+           TProtocolFactory protocolFactory)
+        : this(processorFactory, serverTransport,
+         transportFactory, transportFactory,
+         protocolFactory, protocolFactory,
+         DEFAULT_MAX_THREADS, DefaultLogDelegate)
+    {
+    }
+    public TThreadedServer(TProcessorFactory processorFactory,
                  TServerTransport serverTransport,
                  TTransportFactory inputTransportFactory,
                  TTransportFactory outputTransportFactory,
                  TProtocolFactory inputProtocolFactory,
                  TProtocolFactory outputProtocolFactory,
                  int maxThreads, LogDelegate logDel)
-      : base(processor, serverTransport, inputTransportFactory, outputTransportFactory,
+      : base(processorFactory, serverTransport, inputTransportFactory, outputTransportFactory,
           inputProtocolFactory, outputProtocolFactory, logDel)
     {
       this.maxThreads = maxThreads;
@@ -120,11 +134,7 @@ namespace Thrift.Server
         }
         catch (TTransportException ttx)
         {
-          if (stop)
-          {
-            logDelegate("TThreadPoolServer was shutting down, caught " + ttx);
-          }
-          else
+          if (!stop || ttx.Type != TTransportException.ExceptionType.Interrupted)
           {
             ++failureCount;
             logDelegate(ttx.ToString());
@@ -183,6 +193,7 @@ namespace Thrift.Server
     private void ClientWorker(Object context)
     {
       TTransport client = (TTransport)context;
+      TProcessor processor = processorFactory.GetProcessor(client);
       TTransport inputTransport = null;
       TTransport outputTransport = null;
       TProtocol inputProtocol = null;
@@ -202,7 +213,7 @@ namespace Thrift.Server
               connectionContext = serverEventHandler.createContext(inputProtocol, outputProtocol);
 
             //Process client requests until client disconnects
-            while (true)
+            while (!stop)
             {
               if (!inputTransport.Peek())
                 break;

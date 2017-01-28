@@ -39,9 +39,9 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Collections.Immutable, Version=1.1.37.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    <Reference Include="System.Collections.Immutable, Version=1.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.3.1\lib\netstandard1.0\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression" />
@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\AuthEntry.cs" />
     <Compile Include="Services\AutocompleteRequestBundle.cs" />
     <Compile Include="Services\AutocompleteResponseBundle.cs" />
     <Compile Include="BxAutocompleteRequest.cs" />
@@ -71,6 +72,13 @@
     <Compile Include="Exception\BoxalinoException.cs" />
     <Compile Include="Helper\Common.cs" />
     <Compile Include="Helper\DictionaryExtensions.cs" />
+    <Compile Include="Services\Choice.cs" />
+    <Compile Include="Services\DateRangeGap.cs" />
+    <Compile Include="Services\FacetSortOrder.cs" />
+    <Compile Include="Services\P13nAdminService.cs" />
+    <Compile Include="Services\P13nService.cs" />
+    <Compile Include="Services\P13nServiceException.cs" />
+    <Compile Include="Services\ProfileContext.cs" />
     <Compile Include="Services\PropertyHit.cs" />
     <Compile Include="Services\PropertyQuery.cs" />
     <Compile Include="Services\AutocompleteHit.cs" />
@@ -86,16 +94,15 @@
     <Compile Include="Services\ChoiceUpdateResponse.cs" />
     <Compile Include="Services\ContextItem.cs" />
     <Compile Include="Services\PropertyResult.cs" />
-    <Compile Include="Support\DateRangeGap.cs" />
+    <Compile Include="Services\RecommendationVariant.cs" />
+    <Compile Include="Services\Scenario.cs" />
     <Compile Include="Services\FacetRequest.cs" />
     <Compile Include="Services\FacetResponse.cs" />
-    <Compile Include="Support\FacetSortOrder.cs" />
     <Compile Include="Services\FacetValue.cs" />
     <Compile Include="Services\Filter.cs" />
     <Compile Include="Services\Hit.cs" />
     <Compile Include="Services\HitsGroup.cs" />
     <Compile Include="P13nService.cs" />
-    <Compile Include="Exception\P13nServiceException.cs" />
     <Compile Include="Services\ProfilePropertyValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\RequestContext.cs" />
@@ -107,12 +114,14 @@
     <Compile Include="Services\Variant.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\thrift\src\Thrift.csproj">
-      <Project>{499eb63c-d74c-47e8-ae48-a2fc94538e9d}</Project>
-      <Name>Thrift</Name>
+    <ProjectReference Include="..\thrift\src\Thrift.45.csproj">
+      <Project>{ebce35da-cf6a-42bc-a357-a9c09b534299}</Project>
+      <Name>Thrift.45</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
