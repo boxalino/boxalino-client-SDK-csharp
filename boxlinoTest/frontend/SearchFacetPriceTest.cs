@@ -6,10 +6,10 @@ using System.Web;
 using System.IO;
 using System.Web.SessionState;
 using System.Reflection;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for SearchFacetPriceTest
@@ -70,8 +70,7 @@ namespace boxlinoTest.frontend
                 _searchFacetPrice.searchFacetPrice();
                 string[] princeRange = new string[_searchFacetPrice.facets.getPriceRanges().Keys.Count];
                 _searchFacetPrice.facets.getPriceRanges().Keys.CopyTo(princeRange, 0);
-                string[] princeRange_test = { "22.0-37.5", "37.5-53", "53-68.5", "68.5-84" };
-                Assert.AreEqual(princeRange[0], princeRange_test[0]);
+                Assert.AreEqual(princeRange[0], "22-84");
                 foreach (var item in _searchFacetPrice.bxResponse.getHitFieldValues(new string[] { (_searchFacetPrice.facets.getPriceFieldName()) }))
                 {
 

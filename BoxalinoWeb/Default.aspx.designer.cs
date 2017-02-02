@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BoxalinoWeb {
+namespace examples {
     
     
     public partial class Default {

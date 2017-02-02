@@ -2,14 +2,14 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using System.IO;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for RecommendationsSimilarComplementaryTest

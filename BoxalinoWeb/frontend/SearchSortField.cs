@@ -63,7 +63,7 @@ namespace Boxalino.frontend
                     {
                         foreach (var item in fieldValueMap)
                         {
-                            product += item.Key + ": " + string.Join(",", (item.Value).Value);
+                            product += item.Key + ": " + string.Join(",", (List<string>)(item.Value).Value);
                         }                      
                     }
                     catch { }

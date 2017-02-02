@@ -6,11 +6,11 @@ using System.Web;
 using System.Reflection;
 using System.IO;
 using System.Web.SessionState;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using boxalino_client_SDK_CSharp.Services;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for SearchAutocompletePropertyTest
@@ -67,7 +67,7 @@ namespace boxlinoTest.frontend
                 _searchAutocompleteProperty.password = this.password;
                 _searchAutocompleteProperty.print = false;
                 _searchAutocompleteProperty.searchAutocompleteProperty();
-                List<AutocompleteHit> propertyHitValues = _searchAutocompleteProperty.bxAutocompleteResponse.getPropertyHitValues("categories");
+                List<string> propertyHitValues = _searchAutocompleteProperty.bxAutocompleteResponse.getPropertyHitValues("categories");
 
                 Assert.AreEqual(propertyHitValues.Count, 2);
                 Assert.AreEqual(propertyHitValues[0], "Hoodies &amp; Sweatshirts");

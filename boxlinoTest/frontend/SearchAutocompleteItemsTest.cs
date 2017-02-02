@@ -6,11 +6,11 @@ using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
 using System.IO;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using boxalino_client_SDK_CSharp;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for SearchAutocompleteItemsTest

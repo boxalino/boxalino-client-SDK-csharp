@@ -10,7 +10,7 @@ using System.Web;
 /// <summary>
 /// 
 /// </summary>
-namespace BoxalinoWeb.frontend
+namespace examples.frontend
 {
     /// <summary>
     /// 
@@ -40,8 +40,8 @@ namespace BoxalinoWeb.frontend
         {
             try
             {
-                account  = "csharp_unittest";
-                password = "csharp_unittest";
+                account = "boxalino_automated_tests";
+                password = "boxalino_automated_tests";
                 domain   = "";// your web-site domain (e.g.: www.abc.com)
                 language = "en";// a valid language code (e.g.: "en", "fr", "de", "it", ...)
                 queryText = "women pack";// a search query

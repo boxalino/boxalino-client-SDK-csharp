@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boxlinoTest", "boxlinoTest\boxlinoTest.csproj", "{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "boxlinoTest\tests.csproj", "{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxalinoWeb", "BoxalinoWeb\BoxalinoWeb.csproj", "{C625D316-8241-42B6-A139-924AFD395179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examples", "BoxalinoWeb\examples.csproj", "{C625D316-8241-42B6-A139-924AFD395179}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thrift.45", "thrift\src\Thrift.45.csproj", "{EBCE35DA-CF6A-42BC-A357-A9C09B534299}"
 EndProject

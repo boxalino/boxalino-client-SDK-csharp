@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BoxalinoWeb.backend
+namespace examples.backend
 {
     public class DataDebugXml
     {
@@ -47,7 +47,7 @@ namespace BoxalinoWeb.backend
 
                 if (print)
                 {
-                    HttpContext.Current.Response.Write(HttpUtility.HtmlDecode(bxData.getXML().InnerXml));
+                    HttpContext.Current.Response.Write(HttpUtility.HtmlEncode(bxData.getXML().InnerXml));
                 }
             }
             catch (Exception ex)

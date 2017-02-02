@@ -6,10 +6,10 @@ using System.Web;
 using System.IO;
 using System.Reflection;
 using System.Web.SessionState;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for RecommendationsSimilarTest

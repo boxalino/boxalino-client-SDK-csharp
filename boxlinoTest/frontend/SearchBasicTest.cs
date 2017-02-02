@@ -6,10 +6,10 @@ using System.IO;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for SearchBasicTest

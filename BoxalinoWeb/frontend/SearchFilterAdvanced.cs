@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace BoxalinoWeb.frontend
+namespace examples.frontend
 {
     public class SearchFilterAdvanced
     {
@@ -84,7 +84,7 @@ namespace BoxalinoWeb.frontend
                     logs.Add("<h3>" + item.Key + "</h3>");
                     foreach (var val in item.Value)
                     {
-                        logs.Add(val.Key + ": " + string.Join(",", (val.Value).Value));
+                        logs.Add(val.Key + ": " + string.Join(",", (List<string>)(val.Value).Value));
                     }
                 }
 

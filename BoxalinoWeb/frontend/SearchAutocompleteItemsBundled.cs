@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace BoxalinoWeb.frontend
+namespace examples.frontend
 {
    public class SearchAutocompleteItemsBundled
     {
@@ -92,7 +92,7 @@ namespace BoxalinoWeb.frontend
                             logs.Add("<div>" + item.Key);
                             foreach (var itemFieldValueMap in item.Value)
                             {
-                                logs.Add(" - "+ itemFieldValueMap.Key+ ": " + string.Join(",", itemFieldValueMap.Value.Value) + "");
+                                logs.Add(" - " + itemFieldValueMap.Key + ": " + string.Join(",", (List<string>)itemFieldValueMap.Value.Value) + "");
                             }
                             logs.Add("</div>");
                         }
@@ -107,7 +107,7 @@ namespace BoxalinoWeb.frontend
                         logs.Add("<div>" + hitvalue.Key + "");
                         foreach (var fvaluemap in hitvalue.Value)
                         {
-                            logs.Add(" - "+fvaluemap.Key+": " + string.Join(",", fvaluemap.Value.Value) + "");
+                            logs.Add(" - " + fvaluemap.Key + ": " + string.Join(",", (List<string>)fvaluemap.Value.Value) + "");
                         }
                         logs.Add("</div>");
                     }

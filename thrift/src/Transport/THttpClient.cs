@@ -42,6 +42,7 @@ namespace Thrift.Transport
 
         private int readTimeout = 30000;
 
+
         private IDictionary<String, String> customHeaders = new Dictionary<string, string>();
 
 #if !SILVERLIGHT
@@ -407,19 +408,7 @@ namespace Thrift.Transport
             }
         }
 
-        // Based on http://msmvps.com/blogs/luisabreu/archive/2009/06/15/multithreading-implementing-the-iasyncresult-interface.aspx
-        protected string authorizationString;
-
-        public void setAuthorization(string username, string password)
-        {
-            this.authorizationString = base64Encode(username + ':' + password);
-        }
-        public string base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-
+      
 #region " IDisposable Support "
         private bool _IsDisposed;
 

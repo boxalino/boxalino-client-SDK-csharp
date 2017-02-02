@@ -110,17 +110,17 @@ namespace boxalino_client_SDK_CSharp
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns></returns>
-        public Dictionary<string, AutocompleteHit> getPropertyHits(string field)
+        public List<PropertyHit> getPropertyHits(string field)
         {
             
             foreach (PropertyResult propertyResult in this.getResponse().PropertyResults)
             {
                 if (propertyResult.Name == field)
                 {
-                    return (Dictionary<string, AutocompleteHit>)propertyResult.Hits.ToLookup(x => x);
+                    return (List<PropertyHit>)propertyResult.Hits;
                 }
             }
-            return new Dictionary<string, AutocompleteHit>();
+            return new List<PropertyHit>();
         }
 
         /// <summary>
@@ -129,13 +129,13 @@ namespace boxalino_client_SDK_CSharp
         /// <param name="field">The field.</param>
         /// <param name="hitValue">The hit value.</param>
         /// <returns></returns>
-        public AutocompleteHit getPropertyHit(string field, AutocompleteHit hitValue)
+        public PropertyHit getPropertyHit(string field, string hitValue)
         {
-            foreach (var hit in this.getPropertyHits(field))
+            foreach (PropertyHit hit in this.getPropertyHits(field))
             {
                 if (hit.Value == hitValue)
                 {
-                    return hit.Value;
+                    return hit;
                 }
             }
             return null;
@@ -146,10 +146,10 @@ namespace boxalino_client_SDK_CSharp
         /// </summary>
         /// <param name="field">The field.</param>
         /// <returns></returns>
-        public List<AutocompleteHit> getPropertyHitValues(string field)
+        public List<String> getPropertyHitValues(string field)
         {
-            List<AutocompleteHit> hitValues = new List<AutocompleteHit>();
-            foreach (var hit in this.getPropertyHits(field))
+            List<String> hitValues = new List<String>();
+            foreach (PropertyHit hit in this.getPropertyHits(field))
             {
                 hitValues.Add(hit.Value);
             }
@@ -162,9 +162,9 @@ namespace boxalino_client_SDK_CSharp
         /// <param name="field">The field.</param>
         /// <param name="hitValue">The hit value.</param>
         /// <returns></returns>
-        public string getPropertyHitValueLabel(string field, AutocompleteHit hitValue)
+        public string getPropertyHitValueLabel(string field, string hitValue)
         {
-            AutocompleteHit hit = this.getPropertyHit(field, hitValue);
+            PropertyHit hit = this.getPropertyHit(field, hitValue);
             if (hit != null)
             {
                 return hit.Label;
@@ -178,12 +178,12 @@ namespace boxalino_client_SDK_CSharp
         /// <param name="field">The field.</param>
         /// <param name="hitValue">The hit value.</param>
         /// <returns></returns>
-        public long getPropertyHitValueTotalHitCount(string field, AutocompleteHit hitValue)
+        public long getPropertyHitValueTotalHitCount(string field, string hitValue)
         {
-            AutocompleteHit hit = this.getPropertyHit(field, hitValue);
+            PropertyHit hit = this.getPropertyHit(field, hitValue);
             if (hit != null)
             {
-                return hit.SearchResult.TotalHitCount;
+                return hit.TotalHitCount;
             }
             return 0;
         }

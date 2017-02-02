@@ -6,11 +6,11 @@ using System.Web;
 using System.Web.SessionState;
 using System.IO;
 using System.Reflection;
-using BoxalinoWeb.frontend;
+using examples.frontend;
 using boxalino_client_SDK_CSharp;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for SearchFacetTest

@@ -9,7 +9,7 @@ using System.Reflection;
 using Boxalino.frontend;
 using System.Linq;
 
-namespace boxlinoTest.frontend
+namespace tests.frontend
 {
     /// <summary>
     /// Summary description for SearchSortFieldTest

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace BoxalinoWeb.frontend
+namespace examples.frontend
 {
    public class SearchAutocompleteItems
     {
@@ -74,7 +74,7 @@ namespace BoxalinoWeb.frontend
                         logs.Add("<div>" + itemk.Key + "");
                         foreach (var fValueMap in itemk.Value)
                         {
-                            logs.Add(" - " + fValueMap.Key + ":"+string.Join(",", fValueMap.Value.Value) + "");
+                            logs.Add(" - " + fValueMap.Key + ": "+string.Join(",", (List<string>)fValueMap.Value.Value) + "");
                         }
                         logs.Add("</div>");
                     }
@@ -87,7 +87,7 @@ namespace BoxalinoWeb.frontend
                     string item = fvalueMap.Key;
                     foreach (var itemInfieldValueMap in fvalueMap.Value)
                     {
-                        item += " - " + itemInfieldValueMap.Key + ":"+string.Join(",", itemInfieldValueMap.Value.Value) + "<br>";
+                        item += " - " + itemInfieldValueMap.Key + ": " + string.Join(",", (List<string>)itemInfieldValueMap.Value.Value) + "<br>";
                     }
                     logs.Add(item);
                 }

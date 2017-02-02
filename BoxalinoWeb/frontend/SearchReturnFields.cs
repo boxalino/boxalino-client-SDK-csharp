@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace BoxalinoWeb.frontend
+namespace examples.frontend
 {
     public class SearchReturnFields
     {
@@ -30,8 +30,8 @@ namespace BoxalinoWeb.frontend
             fieldNames = new List<string>();
             try
             {
-                string account = string.IsNullOrEmpty(this.account) ? "csharp_unittest" : this.account; // your account name
-                string password = string.IsNullOrEmpty(this.password) ? "csharp_unittest" : this.password; // your account password
+                string account = string.IsNullOrEmpty(this.account) ? "boxalino_automated_tests" : this.account; // your account name
+                string password = string.IsNullOrEmpty(this.password) ? "boxalino_automated_tests" : this.password; // your account password
               
                 domain = "";// your web-site domain (e.g.: www.abc.com)
                 language = "en";// a valid language code (e.g.: "en", "fr", "de", "it", ...)
@@ -66,7 +66,7 @@ namespace BoxalinoWeb.frontend
                   
                     foreach (var item in fieldValueMap)
                     {
-                        entity += item.Key + ": " + string.Join(",", (List<Dictionary<string,object>>)(item.Value).Value);
+                        entity += item.Key + ": " + string.Join(",", (List<string>)(item.Value).Value);
                     }
                     logs.Add(entity);
                 }

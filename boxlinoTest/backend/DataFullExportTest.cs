@@ -2,13 +2,13 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using BoxalinoWeb.backend;
+using examples.backend;
 using System.IO;
 using System.Web;
 using System.Web.SessionState;
 using System.Reflection;
 
-namespace boxlinoTest.backend
+namespace tests.backend
 {
     /// <summary>
     /// Summary description for DataFullExportTest

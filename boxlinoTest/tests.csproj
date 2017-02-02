@@ -86,9 +86,9 @@
       <Project>{2b570914-d503-4684-8fae-0da64fb7261d}</Project>
       <Name>boxalino_client_SDK_CSharp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BoxalinoWeb\BoxalinoWeb.csproj">
+    <ProjectReference Include="..\BoxalinoWeb\examples.csproj">
       <Project>{c625d316-8241-42b6-a139-924afd395179}</Project>
-      <Name>BoxalinoWeb</Name>
+      <Name>examples</Name>
     </ProjectReference>
     <ProjectReference Include="..\thrift\src\Thrift.45.csproj">
       <Project>{ebce35da-cf6a-42bc-a357-a9c09b534299}</Project>

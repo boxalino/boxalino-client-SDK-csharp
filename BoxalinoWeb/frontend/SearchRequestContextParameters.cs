@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace BoxalinoWeb.frontend
+namespace examples.frontend
 {
     public class SearchRequestContextParameters
     {
@@ -24,8 +24,8 @@ namespace BoxalinoWeb.frontend
         public void searchRequestContextParameters()
         {
             // required parameters you should set for this example to work
-            string account = string.IsNullOrEmpty(this.account) ? "boxalino_automated_tests" : this.account; // your account name
-            string password = string.IsNullOrEmpty(this.password) ? "boxalino_automated_tests" : this.password; // your account password
+            string account = string.IsNullOrEmpty(this.account) ? "csharp_unittest" : this.account; // your account name
+            string password = string.IsNullOrEmpty(this.password) ? "csharp_unittest" : this.password; // your account password
             domain = ""; // your web-site domain (e.g.: www.abc.com)
             logs = new List<string>(); //optional, just used here in example to collect logs
             bool print = this.print ?? true;
