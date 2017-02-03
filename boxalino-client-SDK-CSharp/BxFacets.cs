@@ -290,7 +290,7 @@ namespace boxalino_client_SDK_CSharp
                 {
                     if ((node.Hierarchy).Count() == 1)
                     {
-                        parents = node.Hierarchy.ToDictionary(x => x, x => x);
+                        parents = node.Hierarchy.ToDictionary(x => node.Hierarchy.IndexOf(x).ToString(), x => x);
                     }
                 }
             }
@@ -311,7 +311,7 @@ namespace boxalino_client_SDK_CSharp
                     {
 
 
-                        children = (this.buildTree(response, node.Hierarchy.ToDictionary(x => x, x => x), parentLevel + 1));
+                        children = (this.buildTree(response, node.Hierarchy.ToDictionary(x => node.Hierarchy.IndexOf(x).ToString(), x => x), parentLevel + 1));
                     }
                 }
             }
@@ -320,7 +320,7 @@ namespace boxalino_client_SDK_CSharp
                 if (node.Hierarchy.Count() == parentLevel + 1)
                 {
                     bool allTrue = true;
-                    foreach (var item in node.Hierarchy.Select((Key, Value) => new { Key, Value }))
+                    foreach (var item in node.Hierarchy.ToDictionary(x => node.Hierarchy.IndexOf(x).ToString(), x => x))
                     {
                         if (parents[item.Key] != item.Value.ToString())
                         {
@@ -377,7 +377,12 @@ namespace boxalino_client_SDK_CSharp
         /// <returns></returns>
         protected Dictionary<string, Dictionary<string, FacetValue>> getFirstNodeWithSeveralChildren(Dictionary<string, Dictionary<string, FacetValue>> tree)
         {
-            if (tree["children"].Count == 0)
+            if(tree ==null)
+            {
+                return null;
+            }
+
+            if (tree["children"].Count==0)
             {
                 return null;
             }

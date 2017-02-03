@@ -47,7 +47,7 @@ namespace examples.backend
 
                 if (print)
                 {
-                    HttpContext.Current.Response.Write(HttpUtility.HtmlDecode(bxData.getXML().InnerXml));
+                    HttpContext.Current.Response.Write(HttpUtility.HtmlEncode(bxData.getXML().InnerXml));
                 }
             }
             catch (Exception ex)
