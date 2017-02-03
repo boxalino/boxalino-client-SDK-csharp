@@ -29,7 +29,7 @@ The Boxalino Client SDK are particularly interesting for integrators of Boxalino
     obj.dataInit();
 
 4. Project also contains tests , if you want to run test and analyse result. From test explorer choose to run all tests.
-
+5. Make sure you have received your credentials (account and password) from Boxalino to access your account (if you don't have them, please contact support@boxalino.com)
 
 ## Data Indexing examples
 
