@@ -19,10 +19,17 @@ The Boxalino Client SDK are particularly interesting for integrators of Boxalino
 
 ## Installation
 
-1. Before you start to test, make sure you download all the dependencies via composer (first download and install it form getcomposer.org, then run composer install in your project directory).
-2. Copy the lib folder (with the Thrift library) wherever you want (it doesn't need to be called "lib")
-3. Take any of the examples in the "examples" folder to test (if $libPath as per the examples is set to the path to your lib folder, the rest should work out of the box)
-4. Make sure you have received your credentials (account and password) from Boxalino to access your account (if you don't have them, please contact support@boxalino.com)
+1. Once whole solution is downloaded you will notice four projects . SDK(boxalino_client_SDK_CSharp),implemented examples (examples), test(unit tests) and Thrift .
+2. SDK can be integrated with any project as its a class library or as dll. 
+3. In order to see the examples implementation , go to the examples project and browse to Default.aspx.cs and on page load event create the instance of the class of the 
+  example which you want to test and make a call to the example method .
+  For instance :   
+
+    DataInit obj = new DataInit();
+    obj.dataInit();
+
+4. Project also contains tests , if you want to run test and analyse result. From test explorer choose to run all tests.
+
 
 ## Data Indexing examples
 

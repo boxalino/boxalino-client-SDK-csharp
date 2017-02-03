@@ -283,8 +283,8 @@ namespace boxalino_client_SDK_CSharp
             {
                 transport = new Thrift.Transport.THttpClient(new Uri(String.Format("{0}://{1}{2}", this.schema, this.host, this.uri), UriKind.Absolute));
             }
-            transport.setAuthorization(this.p13n_username, this.p13n_password);
           
+            transport.CustomHeaders.Add("Authorization", "Basic " + System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(this.p13n_username + ':' + this.p13n_password)));
 
 
             P13nService.Client client = new P13nService.Client(new Thrift.Protocol.TCompactProtocol(transport));

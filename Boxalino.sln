@@ -1,15 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boxlinoTest", "boxlinoTest\boxlinoTest.csproj", "{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoxalinoWeb", "BoxalinoWeb\BoxalinoWeb.csproj", "{C625D316-8241-42B6-A139-924AFD395179}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Thrift.45", "thrift\src\Thrift.45.csproj", "{EBCE35DA-CF6A-42BC-A357-A9C09B534299}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "boxalino_client_SDK_CSharp", "boxalino-client-SDK-CSharp\boxalino_client_SDK_CSharp.csproj", "{2B570914-D503-4684-8FAE-0DA64FB7261D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "examples", "examples\examples.csproj", "{44559AA5-D81E-4F95-BCDE-72D34C0B9AC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tests", "tests\tests.csproj", "{E9548198-9DBC-448E-8A69-134A4805D314}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{05686BC2-2470-4CE5-B3A7-385F0859977D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,14 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{169DDAB2-2B53-45FB-8F3D-D0D503D47CB2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C625D316-8241-42B6-A139-924AFD395179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C625D316-8241-42B6-A139-924AFD395179}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C625D316-8241-42B6-A139-924AFD395179}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C625D316-8241-42B6-A139-924AFD395179}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EBCE35DA-CF6A-42BC-A357-A9C09B534299}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -33,6 +32,14 @@ Global
 		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B570914-D503-4684-8FAE-0DA64FB7261D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44559AA5-D81E-4F95-BCDE-72D34C0B9AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44559AA5-D81E-4F95-BCDE-72D34C0B9AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44559AA5-D81E-4F95-BCDE-72D34C0B9AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44559AA5-D81E-4F95-BCDE-72D34C0B9AC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9548198-9DBC-448E-8A69-134A4805D314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9548198-9DBC-448E-8A69-134A4805D314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9548198-9DBC-448E-8A69-134A4805D314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9548198-9DBC-448E-8A69-134A4805D314}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

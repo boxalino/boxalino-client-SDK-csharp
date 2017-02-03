@@ -47,3 +47,14 @@ C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\boxalino-client-SDK-CSharp\bin\Debug\Thrift45.dll
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\boxalino-client-SDK-CSharp\bin\Debug\Thrift45.pdb
 C:\Users\HASHIR\AppData\Local\GitHub\TutorialRepository_d0aa732a2b4666b3029e2320f1a06cd39e99c9fc\new-repo\boxalino-client-SDK-CSharp\bin\Debug\System.Collections.Immutable.xml
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\boxalino-client-SDK-CSharp.dll
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\boxalino-client-SDK-CSharp.pdb
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\Newtonsoft.Json.dll
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\System.Collections.Immutable.dll
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\Thrift45.dll
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\Thrift45.pdb
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\Newtonsoft.Json.xml
+F:\new-repo\boxalino-client-SDK-CSharp\bin\Debug\System.Collections.Immutable.xml
+F:\new-repo\boxalino-client-SDK-CSharp\obj\Debug\boxalino_client_SDK_CSharp.csprojResolveAssemblyReference.cache
+F:\new-repo\boxalino-client-SDK-CSharp\obj\Debug\boxalino-client-SDK-CSharp.dll
+F:\new-repo\boxalino-client-SDK-CSharp\obj\Debug\boxalino-client-SDK-CSharp.pdb
