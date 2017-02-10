@@ -121,7 +121,7 @@ namespace boxalino_client_SDK_CSharp
             return sContents;
         }
 
-        public static string PHPMd5Hash(string pass)
+        public static string Md5Hash(string pass)
         {
             using (MD5 md5 = MD5.Create())
             {

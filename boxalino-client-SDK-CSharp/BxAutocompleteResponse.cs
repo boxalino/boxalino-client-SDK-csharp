@@ -42,7 +42,7 @@ namespace boxalino_client_SDK_CSharp
         {
             if (this.getResponse().PrefixSearchResult.TotalHitCount > 0)
             {
-                return Common.PHPMd5Hash(this.getResponse().PrefixSearchResult.QueryText).Substring(0, 10);
+                return Common.Md5Hash(this.getResponse().PrefixSearchResult.QueryText).Substring(0, 10);
             }
             else
             {

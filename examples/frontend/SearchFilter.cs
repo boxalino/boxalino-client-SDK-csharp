@@ -32,8 +32,8 @@ namespace examples.frontend
 
 
             //required parameters you should set for this example to work
-            string account = string.IsNullOrEmpty(this.account) ? "csharp_unittest" : this.account; // your account name
-            string password = string.IsNullOrEmpty(this.password) ? "csharp_unittest" : this.password; // your account password
+            string account = string.IsNullOrEmpty(this.account) ? "" : this.account; // your account name
+            string password = string.IsNullOrEmpty(this.password) ? "" : this.password; // your account password
 
             domain = ""; // your web-site domain (e.g.: www.abc.com)
             logs = new List<string>(); //optional, just used here in example to collect logs

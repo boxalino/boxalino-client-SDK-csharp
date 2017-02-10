@@ -40,8 +40,8 @@ namespace examples.frontend
         {
             try
             {
-                account = "boxalino_automated_tests";
-                password = "boxalino_automated_tests";
+                account = "";
+                password = "";
                 domain   = "";// your web-site domain (e.g.: www.abc.com)
                 language = "en";// a valid language code (e.g.: "en", "fr", "de", "it", ...)
                 queryText = "women pack";// a search query

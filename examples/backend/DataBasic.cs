@@ -16,12 +16,11 @@ namespace examples.backend
            * In this example, we take a very simple CSV file with product data, generate the specifications, load them, publish them and push the data to Boxalino Data Intelligence
             */
 
-            //include the Boxalino Client SDK php files
-            //include the Boxalino Client SDK php files
-            //path to the lib folder with the Boxalino Client SDK and PHP Thrift Client files
+       
+            //path to the lib folder with the Boxalino Client SDK and C# Thrift Client files
             //required parameters you should set for this example to work
-            string account = "csharp_unittest"; // your account name
-            string password = "csharp_unittest"; // your account password
+            string account = ""; // your account name
+            string password = ""; // your account password
             string domain = ""; // your web-site domain (e.g.: www.abc.com)
             string[] languages = new string[] { "en" }; //declare the list of available languages
             bool isDev = false; //are the data to be pushed dev or prod data?

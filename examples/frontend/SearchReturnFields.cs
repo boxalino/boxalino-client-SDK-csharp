@@ -30,8 +30,8 @@ namespace examples.frontend
             fieldNames = new List<string>();
             try
             {
-                string account = string.IsNullOrEmpty(this.account) ? "boxalino_automated_tests" : this.account; // your account name
-                string password = string.IsNullOrEmpty(this.password) ? "boxalino_automated_tests" : this.password; // your account password
+                string account = string.IsNullOrEmpty(this.account) ? "" : this.account; // your account name
+                string password = string.IsNullOrEmpty(this.password) ? "" : this.password; // your account password
               
                 domain = "";// your web-site domain (e.g.: www.abc.com)
                 language = "en";// a valid language code (e.g.: "en", "fr", "de", "it", ...)

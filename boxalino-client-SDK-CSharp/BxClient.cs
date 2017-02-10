@@ -448,7 +448,7 @@ namespace boxalino_client_SDK_CSharp
         /// or
         /// Configuration not live on account " + this.getAccount() + ": choice " + choiceId + " doesn't exist. NB: If you get a message indicating that the choice doesn't exist, go to http://intelligence.bx-cloud.com, log in your account and make sure that the choice id you want to use is published.
         /// or
-        /// Data not live on account " + this.getAccount() + ": index returns status 404. Please publish your data first, like in example backend_data_basic.php.
+        /// Data not live on account " + this.getAccount() + ": index returns status 404. Please publish your data first, like in example backend_data_basic.
         /// or
         /// You request in your filter or facets a non-existing field of your account " + this.getAccount() + ": field " + field + " doesn't exist.
         /// or
@@ -476,7 +476,7 @@ namespace boxalino_client_SDK_CSharp
 
             if (e.getMessage().IndexOf("Solr returned status 404") <= 0)
             {
-                throw new BoxalinoException("Data not live on account " + this.getAccount() + ": index returns status 404. Please publish your data first, like in example backend_data_basic.php.");
+                throw new BoxalinoException("Data not live on account " + this.getAccount() + ": index returns status 404. Please publish your data first, like in example backend_data_basic.");
 
             }
 

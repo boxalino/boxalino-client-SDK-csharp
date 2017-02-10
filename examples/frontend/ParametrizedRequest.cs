@@ -37,8 +37,8 @@ namespace examples.frontend
         {
 
             //required parameters you should set for this example to work
-            account = "csharp_unittest";
-            password = "csharp_unittest";
+            account = "";
+            password = "";
             domain = ""; // your web-site domain (e.g.: www.abc.com)
             logs = new List<string>(); //optional, just used here in example to collect logs
             isDev = true;
