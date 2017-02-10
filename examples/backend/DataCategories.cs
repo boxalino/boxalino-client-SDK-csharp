@@ -14,9 +14,9 @@ namespace examples.backend
         public void dataCategories()
         {
             /**
-            * In this example, we take a very simple CSV file with product and categories data (and the link between them), generate the specifications, load them, publish them and push the data to Boxalino Data Intelligence
-            */
-           
+* In this example, we take a very simple CSV file with product and categories data (and the link between them), generate the specifications, load them, publish them and push the data to Boxalino Data Intelligence
+*/
+
             //path to the lib folder with the Boxalino Client SDK and C# Thrift Client files
             //required parameters you should set for this example to work
             string account = ""; // your account name
@@ -71,7 +71,7 @@ namespace examples.backend
                 bxData.pushData();
                 if (print)
                 {
-                   
+
                     HttpContext.Current.Response.Write(string.Join("<br/>", logs));
                 }
             }
@@ -81,7 +81,7 @@ namespace examples.backend
                 //be careful not to print the error message on your publish web-site as sensitive information like credentials might be indicated for debug purposes
                 if (print)
                 {
-                    HttpContext.Current.Response.Write(e.Message);  
+                    HttpContext.Current.Response.Write(e.Message);
                 }
             }
 
