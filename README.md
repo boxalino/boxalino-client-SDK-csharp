@@ -19,17 +19,16 @@ The Boxalino Client SDK are particularly interesting for integrators of Boxalino
 
 ## Installation
 
-1. Once whole solution is downloaded you will notice four projects . SDK(boxalino_client_SDK_CSharp),implemented examples (examples), test(unit tests) and Thrift .
+1. Once the whole solution is downloaded you will see four projects: SDK (boxalino_client_SDK_CSharp), examples (ready to copy&paste examples), test(pre-packaged unit tests) and Thrift (internal library of our API).
 2. SDK can be integrated with any project as its a class library or as dll. 
-3. In order to see the examples implementation , go to the examples project and browse to Default.aspx.cs and on page load event create the instance of the class of the 
-  example which you want to test and make a call to the example method .
-  For instance :   
-
+3. In order to see the examples implementation, go to the examples project and browse to Default.aspx.cs. On the page load event, create the instance of the class of the 
+  example you want and make a call to the example method .
+  For instance:
     DataInit obj = new DataInit();
     obj.dataInit();
 
-4. Project also contains tests , if you want to run test and analyse result. From test explorer choose to run all tests.
-5. Make sure you have received your credentials (account and password) from Boxalino to access your account (if you don't have them, please contact support@boxalino.com)
+4. The project also contains tests, if you want to run test and analyse result. From test explorer choose to run all tests. This part can typically be ignored for standard cases.
+5. Make sure you have received your credentials (account and password) from Boxalino to access your account (if you don't have any, please contact support@boxalino.com)
 
 ## Data Indexing examples
 
